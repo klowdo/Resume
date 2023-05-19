@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "Flixen.CurriculumVitae.Contracts.SchemaGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "./schema.json",
+      "environmentVariables": {
+        
+      },
+      "workingDirectory": "$(ProjectDir)"
+    }
+  }
+}
