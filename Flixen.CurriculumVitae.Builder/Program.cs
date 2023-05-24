@@ -1,89 +1,103 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Flixen.CurriculumVitae.Builder;
+using Flixen.CurriculumVitae.Builder.Options;
+using QuestPDF.Drawing;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using QuestPDF.Previewer;
-using SkiaSharp;
+using SkiaSharp.Extended.Iconify;
+using SkiaSharp.HarfBuzz;
 
+var options = new ResumeOptions
+{
+Contact = new ContactInforation
+{
+    Name = "Felix Svensson",
+    Phone = "+46737120411",
+    Email = "felix@flixen.se",
+    Adress = "Lillekärr Norra 56,\n425 34 Hissing Kärra"
+}
+};
+
+SKTextRunLookup.Instance.AddFontAwesome();
+
+QuestPDF.Settings.CheckIfAllTextGlyphsAreAvailable = true;
+FontManager.RegisterFont(FontAwesome.GetFontStream());
+FontManager.RegisterFontWithCustomName("glyphs",File.OpenRead("Resources/fa-regular-400.ttf"));
+FontManager.RegisterFontWithCustomName("solid-glyphs",File.OpenRead("Resources/fa-solid-900.ttf"));
 Document
     .Create(container =>
     {
         var mainColor = "#E9DAC4";
+        var backgorund = "#EAE3C9";
         container.Page(page =>
         {
+            page.PageColor(backgorund);
             page.Size(PageSizes.A4);
-            page.Margin(1.5f, Unit.Centimetre);
-            page.PageColor(Colors.White);
-            page.DefaultTextStyle(x => x.FontSize(20));
 
-            page.Header()
-                .Table(table =>
+          
+            page.Content()
+                .Row(row =>
                 {
-                    var cellHeight = 150;
-                    table.ColumnsDefinition(c =>
-                    {
-                        c.ConstantColumn(cellHeight);
-                        c.RelativeColumn();
-                    });
-                    var padding = 30;
-
-                    table.Cell()
-                        .Height(cellHeight)
-                        .Layers(layers =>
-                        {
-                            layers.Layer().Canvas((canvas, size) =>
-                            {
-                                using var paint = new SKPaint
-                                {
-                                    Color = SKColor.Parse(mainColor),
-                                    IsStroke = false,
-                                    StrokeWidth = 2,
-                                    IsAntialias = true
-                                };
-                                canvas.DrawRoundRect(0, 0, size.Width, size.Height, 100, 100, paint);
-                                canvas.DrawRect(size.Width / 2, padding, size.Width / 2 + 1, size.Height - (padding * 2),
-                                    paint);
-                            });
-
-                            layers.PrimaryLayer()
-                                .Padding(5)
-                                .Image("Resources/felix_evolve-rund.png")
-                                .FitArea();
-                        });
-
-
-
-                 table.Cell()
-                        .Element(c => c
-                            .PaddingVertical(padding)
-                            .Background(mainColor))
-                        .Padding(13)
-                        .Column(column =>
-                        {
-                            column.Item()
-                                .AlignRight()
-                                .Text("Felix Svensson")
-                                .FontSize(30)
-                                .Bold();
-                            column.Item()
-                                .AlignRight()
-                                .Text("SOFTWARE DEVELOPER")
-                                .Bold()
-                                .FontSize(10);
-                        });
-                        
                     
-                });
-         
+                    row.RelativeItem(2)
+                        .Component(new SideBar( options, mainColor));
 
-            page.Footer()
-                .AlignCenter()
-                .Text(x =>
-                {
-                    x.Span("Page ");
-                    x.CurrentPageNumber();
+                    row.RelativeItem(3)
+                        .Component(new MainPage(options, mainColor));
                 });
+            
+
+            // page.Content()
+            //     .Table(table =>
+            //     {
+            //         table.ColumnsDefinition(def =>
+            //         {
+            //             def.RelativeColumn();
+            //             def.RelativeColumn(2);
+            //         });
+            //         table.Cell()
+            //             .Background(mainColor)
+            //             .Padding(20)
+            //             .Column(col =>
+            //             {
+            //                 col.Item()
+            //                     .Image("Resources/felix_evolve_small.jpg")
+            //                     .FitUnproportionally()
+            //                     .FitArea();
+            //                 col.Item()
+            //                     .Text("Kontakt")
+            //                     .Bold();
+            //                 col.Item()
+            //                     .Text("email");
+            //                 col.Item()
+            //                     .Text("phone");
+            //                 col.Item()
+            //                     .Text("Adress");
+            //             });
+            //
+            //         table.ExtendLastCellsToTableBottom();
+            //     });
+
+            // page.Margin(1.5f, Unit.Centimetre);
+            // page.PageColor(Colors.White);
+            // page.DefaultTextStyle(x => x.FontSize(20));
+            //
+            // page.Header()
+            //     .Component(new Header(mainColor));
+            //     
+            // page.Footer()
+            //     .Component(new Footer(mainColor));
+
+            // page.Footer()
+            //     .AlignCenter()
+            //     .Text(x =>
+            //     {
+            //         x.Span("Page ");
+            //         x.CurrentPageNumber();
+            //     });
         });
     })
     .ShowInPreviewer();
