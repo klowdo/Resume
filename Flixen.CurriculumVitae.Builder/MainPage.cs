@@ -1,4 +1,4 @@
-using Flixen.CurriculumVitae.Builder.Options;
+using Flixen.CurriculumVitae.Contracts;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -37,7 +37,7 @@ public class MainPage : IComponent
 
             col.Item()
                 .PaddingHorizontal(10)
-                .Text(Placeholders.Paragraphs());
+                .Text(_options.MainText);
 
             col.Item()
                 .PaddingHorizontal(35)
@@ -52,18 +52,20 @@ public class MainPage : IComponent
                 .FontSize(20);
 
             col.Item()
+                .EnsureSpace()
                 .Column(innerCol =>
                 {
-                    for (int i = 0; i < 3; i++)
+                    foreach (var workItem in _options.WorkItems)
                     {
                         innerCol.Item()
                             .EnsureSpace()
+                            .DebugArea()
                             .Layers(layers =>
                             {
                                 var padding = 30;
                                 layers.PrimaryLayer()
                                     .PaddingHorizontal(padding)
-                                    .Component(new WorkComponent(new WorkItem()));
+                                    .Component(new WorkComponent(workItem));
                                 
                                 layers.Layer()
                                     .Canvas(((canvas, size) =>
@@ -78,39 +80,9 @@ public class MainPage : IComponent
                                         canvas.DrawCircle(size.Width - (int)(padding / 2), 9, 4, paint);
                                         var lineWidth = 2;
                                         canvas.DrawRect((size.Width) - (int)(padding / 2)-(int)(lineWidth/2), 10, lineWidth, size.Height, paint);
-                                        // canvas.DrawRoundRect(0, 0, size.Width, size.Height, 100, 100, paint);
-                                        // canvas.DrawRect(size.Width / 2, padding, size.Width / 2 + 1, size.Height - (padding * 2),
-                                        // paint);
                                     }));
                             });
-                            // // .EnsureSpace()
-                            // .Row(row =>
-                            // {
-                            //     row.RelativeItem(10)
-                            //         .MinimalBox()
-                            //         .DebugArea()
-                            //         .Component(new WorkComponent(new WorkItem()));
-                            //     row.RelativeItem()
-                            //         .DebugArea()
-                            //         .Canvas(((canvas, size) =>
-                            //         {
-                            //             using var paint = new SKPaint
-                            //             {
-                            //                 Color = SKColor.Parse(Colors.Black),
-                            //                 IsStroke = false,
-                            //                 StrokeWidth = 2,
-                            //                 IsAntialias = true
-                            //             };
-                            //             canvas.DrawCircle(size.Width/2,10,4,paint);
-                            //             var lineWidth = 2;
-                            //             // canvas.DrawRect((size.Width- lineWidth)/2  , 10, lineWidth, size.Height, paint);
-                            //             // canvas.DrawRoundRect(0, 0, size.Width, size.Height, 100, 100, paint);
-                            //             // canvas.DrawRect(size.Width / 2, padding, size.Width / 2 + 1, size.Height - (padding * 2),
-                            //             // paint);
-                            //         }));
-                            // });
-                        // col.Item()
-                   
+
                     }
                 });
 
@@ -119,20 +91,20 @@ public class MainPage : IComponent
     }
 }
 
-public class WorkItem
-{
-    public string Name { get; set; } = Placeholders.Name();
-    public string Place { get; set; } = Placeholders.Label();
-    public DateOnly From { get; set; } = DateOnly.FromDateTime(DateTime.Parse(Placeholders.DateTime()));
-    public DateOnly? To { get; set; } = DateOnly.FromDateTime(DateTime.Parse(Placeholders.DateTime()));
-
-    public string[] Items { get; set; } =
-    {
-        Placeholders.Sentence(),
-        Placeholders.Sentence(),
-        Placeholders.Sentence(),
-    };
-}
+// public class WorkItem
+// {
+//     public string Name { get; set; } = Placeholders.Name();
+//     public string Place { get; set; } = Placeholders.Label();
+//     public DateOnly From { get; set; } = DateOnly.FromDateTime(DateTime.Parse(Placeholders.DateTime()));
+//     public DateOnly? To { get; set; } = DateOnly.FromDateTime(DateTime.Parse(Placeholders.DateTime()));
+//
+//     public string[] Items { get; set; } =
+//     {
+//         Placeholders.Sentence(),
+//         Placeholders.Sentence(),
+//         Placeholders.Sentence(),
+//     };
+// }
 
 public class WorkComponent : IComponent
 {
@@ -164,7 +136,7 @@ public class WorkComponent : IComponent
             });
 
             col.Item()
-                .Text(Placeholders.Label());
+                .Text(_item.Place);
 
             col.Item()
                 .Column(itemCOl =>

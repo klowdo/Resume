@@ -1,4 +1,4 @@
-using Flixen.CurriculumVitae.Builder.Options;
+using Flixen.CurriculumVitae.Contracts;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -44,7 +44,7 @@ public class SideBar : IComponent
                     {
                         ("", contact.Phone),
                         ("", contact.Email),
-                        ("", contact.Adress)
+                        ("", contact.Address)
                     }));
                
                 side.Item()
@@ -59,13 +59,13 @@ public class SideBar : IComponent
                     .PaddingHorizontal(paddingHorizontal)
                     .Column(column =>
                     {
-                        foreach (var i in Enumerable.Range(1, 8))
+                        foreach (var skill in _options.Skills)  
                         {
                             column.Item().Row(row =>
                             {
                                 row.Spacing(5);
                                 row.AutoItem().Text("•"); // text or image
-                                row.RelativeItem().Text(Placeholders.Name());
+                                row.RelativeItem().Text(skill);
                             });
                         }
                     });

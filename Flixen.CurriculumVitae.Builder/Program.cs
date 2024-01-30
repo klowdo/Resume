@@ -1,26 +1,25 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Flixen.CurriculumVitae.Builder;
-using Flixen.CurriculumVitae.Builder.Options;
+using Flixen.CurriculumVitae.Contracts;
 using QuestPDF.Drawing;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
 using QuestPDF.Previewer;
 using SkiaSharp.Extended.Iconify;
-using SkiaSharp.HarfBuzz;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 
-var options = new ResumeOptions
-{
-Contact = new ContactInforation
-{
-    Name = "Felix Svensson",
-    Phone = "+46737120411",
-    Email = "felix@flixen.se",
-    Adress = "Lillekärr Norra 56,\n425 34 Hissing Kärra"
-}
-};
 
+
+var deserializer = new DeserializerBuilder()
+    .WithNamingConvention(CamelCaseNamingConvention.Instance)  // see height_in_inches in sample yml 
+    .Build();
+
+using var reader = File.OpenRead(args[0]);
+using var stream = new StreamReader(reader);
+var options = deserializer.Deserialize<ResumeOptions>(stream);
+    
 SKTextRunLookup.Instance.AddFontAwesome();
 
 QuestPDF.Settings.CheckIfAllTextGlyphsAreAvailable = true;
@@ -30,8 +29,8 @@ FontManager.RegisterFontWithCustomName("solid-glyphs",File.OpenRead("Resources/f
 Document
     .Create(container =>
     {
-        var mainColor = "#E9DAC4";
-        var backgorund = "#EAE3C9";
+        var mainColor = "#eadac6";
+        var backgorund = "#fdf6eb";
         container.Page(page =>
         {
             page.PageColor(backgorund);

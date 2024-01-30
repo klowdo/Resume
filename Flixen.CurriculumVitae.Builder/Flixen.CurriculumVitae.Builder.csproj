@@ -16,11 +16,18 @@
         <PackageReference Include="SkiaSharp.Extended.Iconify.FontAwesome" Version="5.0.0" />
         <PackageReference Include="SkiaSharp.Extended.Iconify.MaterialIcons" Version="4.0.0" />
         <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.3" />
+        <PackageReference Include="YamlDotNet" Version="13.1.0" />
     </ItemGroup>
 
+  
     <ItemGroup>
         <EmbeddedResource Include="Resources\felix_evolve-rund.png" />
 <!--        <EmbeddedResource Include="Resources\felix_evolve.jpg" />-->
+    </ItemGroup>
+
+  
+    <ItemGroup>
+      <ProjectReference Include="..\Flixen.CurriculumVitae.Contracts\Flixen.CurriculumVitae.Contracts.csproj" />
     </ItemGroup>
 
 </Project>
