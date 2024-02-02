@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "ResumeOptions",
+  "title": "ResumeModel",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -29,6 +29,12 @@
       "type": "array",
       "items": {
         "type": "string"
+      }
+    },
+    "fonts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Fonts"
       }
     }
   },
@@ -92,6 +98,21 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "Fonts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "name": {
+          "type": [
+            "null",
+            "string"
+          ]
         }
       }
     }

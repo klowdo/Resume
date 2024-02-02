@@ -19,16 +19,7 @@ var settings = new SystemTextJsonSchemaGeneratorSettings()
     }
 
 };
-// var settings = new JsonSchemaGeneratorSettings
-// {
-//     SerializerSettings = new JsonSerializerSettings
-//     {
-//         ContractResolver = new DefaultContractResolver
-//         {
-//             NamingStrategy = new CamelCaseNamingStrategy()
-//         }
-//     }
-// };
+
 var schema = JsonSchema.FromType<ResumeModel>(settings);
 var schemaData = schema.ToJson();
-File.WriteAllTextAsync(args[0],schemaData);
+await File.WriteAllTextAsync(args[0],schemaData);

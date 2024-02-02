@@ -10,6 +10,7 @@ public class SkillsSection(ResumeModel model) : IComponent
     {
         container.Column(col =>
         {
+            col.Spacing(10);
             col.Item()
                 .ShowOnce()
                 .PaddingTop(10) //TODO: remove
@@ -22,12 +23,14 @@ public class SkillsSection(ResumeModel model) : IComponent
                 {
                     foreach (var skill in model.Skills)
                     {
-                        column.Item().Row(row =>
-                        {
-                            row.Spacing(5);
-                            row.AutoItem().Text("•").Bold(); // text or image
-                            row.RelativeItem().Text(skill);
-                        });
+                        column.Spacing(4);
+                        column.Item()
+                            .Row(row =>
+                            {
+                                row.Spacing(8);
+                                row.AutoItem().Text("•").Bold(); // text or image
+                                row.RelativeItem().Text(skill);
+                            });
                     }
                 });
         });
