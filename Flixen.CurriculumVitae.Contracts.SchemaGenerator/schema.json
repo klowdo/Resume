@@ -4,8 +4,17 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "colors": {
+      "$ref": "#/definitions/ResumeColors"
+    },
     "contact": {
       "$ref": "#/definitions/ContactInforation"
+    },
+    "image": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
     },
     "mainText": {
       "type": "string"
@@ -24,6 +33,21 @@
     }
   },
   "definitions": {
+    "ResumeColors": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "main": {
+          "type": "string"
+        },
+        "mainTextColor": {
+          "type": "string"
+        },
+        "background": {
+          "type": "string"
+        }
+      }
+    },
     "ContactInforation": {
       "type": "object",
       "additionalProperties": false,

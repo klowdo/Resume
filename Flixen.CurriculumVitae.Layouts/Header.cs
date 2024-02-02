@@ -2,7 +2,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using SkiaSharp;
 
-namespace Flixen.CurriculumVitae.Builder;
+namespace Flixen.CurriculumVitae.Layouts;
 
 public class Header: IComponent
 {

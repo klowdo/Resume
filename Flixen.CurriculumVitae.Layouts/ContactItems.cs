@@ -1,15 +1,11 @@
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace Flixen.CurriculumVitae.Builder;
+namespace Flixen.CurriculumVitae.Layouts;
 
-public class ContactItems : IComponent
+public class ContactItems(IEnumerable<(string item, string text)> items) : IComponent
 {
-    private const int Padding = 7;
-    private readonly IEnumerable<(string item, string text)> _items;
-
-    public ContactItems(IEnumerable<(string item, string text)> items) 
-        => _items = items;
+    private const int Padding = 12;
 
     public void Compose(IContainer container)
     {
@@ -20,7 +16,7 @@ public class ContactItems : IComponent
                 columns.RelativeColumn();
                 columns.RelativeColumn(8);
             });
-            foreach (var (icon, text) in _items)
+            foreach (var (icon, text) in items)
             {
                 table.Cell()
                     .AlignTop()

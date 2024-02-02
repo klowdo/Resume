@@ -1,13 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <LangVersion>latest</LangVersion>
     </PropertyGroup>
-
     <ItemGroup>
         <PackageReference Include="HarfBuzzSharp" Version="7.3.0.1" />
         <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="7.3.0.1" />
@@ -17,31 +14,12 @@
         <PackageReference Include="SkiaSharp.Extended.Iconify.FontAwesome" Version="5.0.0" />
         <PackageReference Include="SkiaSharp.Extended.Iconify.MaterialIcons" Version="4.0.0" />
         <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.7" />
-        <PackageReference Include="YamlDotNet" Version="15.1.0" />
     </ItemGroup>
-
-  
     <ItemGroup>
-        <EmbeddedResource Include="Resources\felix_evolve-rund.png" />
-<!--        <EmbeddedResource Include="Resources\felix_evolve.jpg" />-->
-    </ItemGroup>
-
-  
-    <ItemGroup>
-      <ProjectReference Include="..\Flixen.CurriculumVitae.Layouts\Flixen.CurriculumVitae.Layouts.csproj" />
       <ProjectReference Include="..\Flixen.CurriculumVitae.Models\Flixen.CurriculumVitae.Models.csproj" />
     </ItemGroup>
-
     <ItemGroup>
-        <Watch Include="data.yaml;Resources/*" />
-    </ItemGroup> 
-    <ItemGroup>
-      <None Update="data.yaml">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-    </ItemGroup> 
-    <ItemGroup>
-      <Folder Include="Resources\Bebas Neue\" />
+      <ProjectReference Include="..\Flixen.CurriculumVitae.Models\Flixen.CurriculumVitae.Models.csproj" />
     </ItemGroup>
 
 </Project>

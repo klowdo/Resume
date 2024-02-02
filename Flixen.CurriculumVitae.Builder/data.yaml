@@ -1,5 +1,11 @@
 # yaml-language-server: $schema=../Flixen.CurriculumVitae.Contracts.SchemaGenerator/schema.json
-
+colors: 
+#  background: "#000000"
+  main: "#000000"
+  background: "#FFFFFF"
+  mainTextColor: "#FFFFFF"
+image: Resources/felix_evolve_small.jpg 
+title: Friendly Developer
 mainText: I'm a solution driven person and
   always looking for
   improvement. Love new tech
@@ -8,9 +14,9 @@ mainText: I'm a solution driven person and
 
 contact:
   name: Felix Svensson
-  address: >
-    Lillekärr Norra 56
-    425 34 Hissings Kärra
+  address: |-
+    Lillekärr Norra 56,
+    425 34 Hisings Kärra
   email: felix@flixen.se
   phone: "+46737120411"
 skills:
