@@ -1,0 +1,81 @@
+name: Build and Release PDF
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags like v1.0.0
+
+env:
+  DOTNET_VERSION: '8.x'  # Define .NET version
+  PROJECT_NAME: 'Flixen.CurriculumVitae.Builder'  # Define project name
+  PUBLISH_DIR: './publish'  # Directory for publishing output
+  OUTPUT_PDF: './github-release/folder/resume.pdf'  # PDF output location
+  BUILD_CONFIGURATION: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Setup .NET Core with the specified version
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      # Restore dependencies with Release configuration
+      - name: Restore dependencies
+        run: >-
+          dotnet restore 
+          --configuration {{ env.BUILD_CONFIGURATION }}
+      - name: Build solution
+        run: >-
+          dotnet build 
+          --no-restore
+          --configuration {{ env.BUILD_CONFIGURATION }}
+      # Publish the project
+      - name: Publish project
+        run: >- 
+          dotnet publish ${{ env.PROJECT_NAME }}
+          --no-build
+          --configuration {{ env.BUILD_CONFIGURATION }}
+          --output ${{ env.PUBLISH_DIR }}
+
+      # Run the published output to generate the PDF
+      - name: Run published project and generate PDF
+        run: >-
+          dotnet ${{ env.PUBLISH_DIR }}/${{ env.PROJECT_NAME }}.dll 
+          --write 
+          --output ${{ env.OUTPUT_PDF }}
+
+      # Archive the output PDF (optional)
+      - name: Archive generated PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume-pdf
+          path: ${{ env.OUTPUT_PDF }}
+
+      # Create GitHub Release and upload PDF
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      # Upload the generated PDF to the GitHub release
+      - name: Upload PDF to Release
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ env.OUTPUT_PDF }}
+          asset_name: resume.pdf
+          asset_content_type: application/pdf
