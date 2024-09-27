@@ -1,0 +1,61 @@
+name: Build and Release PDF
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags like v1.0.0
+
+permissions:
+  contents: write
+
+env:
+  DOTNET_VERSION: '8.x'  # Define .NET version
+  PROJECT_NAME: 'Flixen.CurriculumVitae.Builder'  # Define project name
+  PUBLISH_DIR: './publish'  # Directory for publishing output
+  OUTPUT_PDF: './github-release/folder/resume.pdf'  # PDF output location
+  CONFIG_FILE: './data.yaml' #config file
+  BUILD_CONFIGURATION: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Setup .NET Core with the specified version
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      # Restore dependencies with Release configuration
+      - name: Restore dependencies
+        run: dotnet restore 
+
+      - name: Build solution
+        run: >-
+          dotnet build 
+          --no-restore
+          --configuration ${{ env.BUILD_CONFIGURATION }}
+
+      # Run to generate the PDF
+      - name: Run project and generate PDF
+        working-directory: ./${{ env.PROJECT_NAME }}
+        run: >-
+          dotnet run 
+          --configuration ${{ env.BUILD_CONFIGURATION }}
+          --config-file ${{ env.CONFIG_FILE }}
+          -- write
+          --output ../github-release/folder/resume.pdf
+
+      # Upload the generated PDF to the GitHub release
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ${{ env.OUTPUT_PDF }}
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
