@@ -8,19 +8,47 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    
+
+env:
+  DOTNET_VERSION: '8.x'  # Define .NET version
+  PROJECT_NAME: 'Flixen.CurriculumVitae.Builder'  # Define project name
+  PUBLISH_DIR: './publish'  # Directory for publishing output
+  OUTPUT_PDF: './github-release/folder/resume.pdf'  # PDF output location
+  CONFIG_FILE: './data.yaml' #config file
+  BUILD_CONFIGURATION: Release
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Setup .NET Core with the specified version
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      # Restore dependencies with Release configuration
+      - name: Restore dependencies
+        run: dotnet restore 
+
+      - name: Build solution
+        run: >-
+          dotnet build 
+          --no-restore
+          --configuration ${{ env.BUILD_CONFIGURATION }}
+
+      # Run to generate the PDF
+      - name: Run project and generate PDF
+        working-directory: ./${{ env.PROJECT_NAME }}
+        run: >-
+          dotnet run 
+          --configuration ${{ env.BUILD_CONFIGURATION }}
+          --config-file ${{ env.CONFIG_FILE }}
+          -- write
+          --output ../github-release/folder/resume.pdf
