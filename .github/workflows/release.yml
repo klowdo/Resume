@@ -33,11 +33,11 @@ jobs:
 
       # Restore dependencies with Release configuration
       - name: Restore dependencies
-        run: dotnet restore 
+        run: dotnet restore
 
       - name: Build solution
         run: >-
-          dotnet build 
+          dotnet build
           --no-restore
           --configuration ${{ env.BUILD_CONFIGURATION }}
 
@@ -45,7 +45,7 @@ jobs:
       - name: Run project and generate PDF
         working-directory: ./${{ env.PROJECT_NAME }}
         run: >-
-          dotnet run 
+          dotnet run
           --configuration ${{ env.BUILD_CONFIGURATION }}
           --config-file ${{ env.CONFIG_FILE }}
           -- write
@@ -58,4 +58,4 @@ jobs:
         with:
           files: |
             ${{ env.OUTPUT_PDF }}
-          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
