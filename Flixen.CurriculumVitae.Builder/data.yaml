@@ -33,6 +33,14 @@ skills:
 
 workItems:
   - name: Freelancer
+    place: Volvo / Flixen AB
+    from: 2023-07-03
+    items:
+      - Part of the Energy Device Cloud team at Volvo.
+      - Built an OCPP server in .NET using the Orleans actor system, optimized for high performance and scalability.
+      - Infrastructure and hosting handled in AWS using Terraform for IaC.
+
+  - name: Freelancer
     place: Chargenode EU / Flixen AB
     from: 2023-02-23
     to: 2023-06-28
