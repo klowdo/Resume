@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=../Flixen.CurriculumVitae.Contracts.SchemaGenerator/schema.json
-colors: 
+colors:
   main: "#000000"
   background: "#FFFFFF"
   mainTextColor: "#FFFFFF"
@@ -10,13 +10,9 @@ fonts:
     name: glyphs
   - path: Resources/fa-solid-900.ttf
     name: solid-glyphs
-image: Resources/felix_evolve_small.jpg 
+image: Resources/felix_evolve_small.jpg
 title: Friendly Developer
-mainText: I'm a solution driven person and
-  always looking for
-  improvement. Love new tech
-  and always keeping me up to
-  date what’s happening.
+mainText: I'm a solution-driven person, always looking for improvement. I love new technology and constantly stay up to date with what's happening in the industry.
 
 contact:
   name: Felix Svensson
@@ -25,78 +21,77 @@ contact:
     425 34 Hisings Kärra
   email: felix@flixen.se
   phone: "+46737120411"
+
 skills:
   - C#
-  - GO
+  - Go
+  - Linux/NixOs
   - DDD
-  - EVENT-SOURCING
-  - REACT TYPESCRIPT
-  - GRAPHQL
-  - AZURE
-  - EVENTSTORE
-  - EVENT-SOURCING
-  - DEVOPS
+  - Event Sourcing
+  - Azure
+  - AWS
+
 workItems:
   - name: Freelancer
     place: Chargenode EU / Flixen AB
     from: 2023-02-23
+    to: 2023-06-28
     items:
-      - The client is an EV charger provider that does all
-        development in-house including hardware customer
-        portal and down to charger protocols. My focus is creating
-        a high scalable system in azure for connecting 100k +
-        chargers leveraging the actor model.
-      - Also, while maintaining and supporting mainline
-        development current system written I dotnet.
+      - The client is an EV charger provider that develops everything in-house—from hardware to customer portal and charger protocols.
+      - Focused on creating a highly scalable system in Azure for connecting 100k+ chargers using the actor model.
+      - Also maintained and supported the mainline development of the existing system written in .NET.
+
   - name: Freelancer
     place: Worldstream / Flixen AB
     from: 2022-03-15
     to: 2023-02-15
     items:
-      - The first client was an Infrastructure provider based in
-        Netherlands (Same as evolve technology). This system is
-        an event-sourced system and traceability is key-focus and
-        written I go to gain performance.
-      - golang, evensourcing, docker
-  - name: Senior developer
-    place: Evolve Technology/Afry
+      - Infrastructure provider based in the Netherlands (same client as at Evolve Technology).
+      - Built an event-sourced system where traceability was a key focus, written in Go for performance.
+      - "Technologies used: Go, event sourcing, Docker."
+
+  - name: Senior Developer
+    place: Evolve Technology / AFRY
     from: 2020-03-01
     to: 2022-08-12
     items:
-      - Software development in agile projects
-      - Identity and security management
-      - Productivity and tools improvement
-      - First client was a Swedish med-tech company that focuses on pro-active care of patient with live health monitoring. This system was written in C# and built into Microsoft azures cloud services.
-      - Second client was a Infrastructure provider based in Netherlands. This system was an event-sourced system where traceability was key-focus and written I go to gainperformance.
-  - name: AZURE INTEGRATION
-    place: CXC (Deloite Australia)
+      - Software development in agile teams.
+      - Identity and security management.
+      - Productivity and tooling improvements.
+      - First client was a Swedish med-tech company focused on proactive patient care through live health monitoring. The system was written in C# and deployed in Microsoft Azure.
+      - Second client was a Netherlands-based infrastructure provider. The system was event-sourced and built in Go for performance and traceability.
+
+  - name: Azure Integration
+    place: CXC (Deloitte Australia)
     from: 2019-05-27
     to: 2020-02-15
     items:
       - Application development stream lead.
-      - Technical analysis and problem investigation in relation to software platforms at the Cloud Infrastructure layers.
-      - Platform and Infrastructure configuration for both the implementation of changes and resolution of problems as required
-      - Collaboration with other technology units at Deloitte, Customers and their 3rd party service providers.
-      - ITSM process execution including Incident and Problem Management utilizing applications such as VSTS and Jira.
-      - Analysis, tracking and monitoring of technical issues including regular reporting and escalation where required
-      - Platform and Infrastructure system monitoring utilizing a variety of modern tools including event and log managers
-  - name: TECH LEAD
+      - Technical analysis and troubleshooting at the cloud infrastructure level.
+      - Platform configuration for both implementing changes and resolving issues.
+      - Cross-team collaboration with Deloitte, clients, and third-party vendors.
+      - ITSM execution, including Incident and Problem Management using VSTS and Jira.
+      - Regular reporting and escalation of technical issues.
+      - Monitoring using various modern tools including event/log managers.
+
+  - name: Tech Lead
     place: Collector Bank
     from: 2016-01-04
     to: 2019-01-04
     items:
-      - Collaborative development of core bank system.
-      - Monitor and operating production cloud systems. ensuring an always up system.
-      - In charge of Cloud infrastructure and security maintenance and development.
-      - Building and maintaining CI/CD
-      - Analysing new technologies to investigate improvement of systems speed, reliability and security.
-      - Management utilizing applications such as Azure DevOps and Octopus deploy.
-  - from: "2015-05-03"
-    to: "2016-06-04"
-    name: AZURE INTEGRATION
+      - Co-developed the core banking system.
+      - Monitored and operated production cloud systems to ensure high availability.
+      - Managed cloud infrastructure and security.
+      - Built and maintained CI/CD pipelines.
+      - Investigated new technologies to improve performance, reliability, and security.
+      - Used Azure DevOps and Octopus Deploy for operations and deployment.
+
+  - name: Azure Integration
     place: Collector Bank
+    from: 2015-05-03
+    to: 2016-06-04
     items:
-      - Direct communication with the origination and analyzing new components to be manufactured or migrated.'
-      - Building, testing and deployment of service.
-      - Monitor, reporting and updating cloud services components
-      - Management utilizing applications such as Team city, Jira and Octopus deploy.
+      - Direct communication with stakeholders and analysis of new components to be developed or migrated.
+      - Built, tested, and deployed services.
+      - Monitored, reported, and updated cloud service components.
+      - Managed systems using TeamCity, Jira, and Octopus Deploy.
