@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="HarfBuzzSharp" Version="7.3.0.3" />
+        <PackageReference Include="HarfBuzzSharp" Version="8.3.1.1" />
         <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="7.3.0.3" />
         <PackageReference Include="QuestPDF" Version="2023.12.4" />
         <PackageReference Include="SkiaSharp.Extended" Version="2.0.0" />
