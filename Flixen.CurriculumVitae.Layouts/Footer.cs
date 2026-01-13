@@ -8,7 +8,10 @@ namespace Flixen.CurriculumVitae.Builder;
 public class Footer : IComponent
 {
     private readonly string _color;
-    private readonly int _iconSize = 30;
+    private const int IconSize = 30;
+    private const int IconTextSize = 15;
+    private const int ItemSpacing = 5;
+    private const int RowSpacing = 30;
 
     public Footer(string color)
     {
@@ -17,85 +20,71 @@ public class Footer : IComponent
 
     public void Compose(IContainer container)
     {
+        var contactItems = new[]
+        {
+            (icon: "fa-envelope", text: "felix@flixen.se"),
+            (icon: "fa-phone", text: "+46737120411")
+        };
 
         container.AlignCenter().Row(row =>
         {
-            row.Spacing(30);
-            row.AutoItem().Column(col =>
+            row.Spacing(RowSpacing);
+            foreach (var item in contactItems)
             {
-                col.Spacing(5);
-                col.Item()
-                    .AlignCenter()
-                    .Height(_iconSize)
-                    .Width(_iconSize)
-                    .Canvas((canvas, size) =>
-                    {
-                        using var paint = new SKPaint
-                        {
-                            Color = SKColor.Parse(_color),
-                            IsStroke = false,
-                            StrokeWidth = 2,
-                            IsAntialias = true
-                        };
-                        canvas.DrawRoundRect(0, 0, size.Width, size.Height, 100, 100, paint);
-
-                        using var textPaint = new SKPaint();
-                        textPaint.TextAlign = SKTextAlign.Center;
-                        textPaint.FilterQuality = SKFilterQuality.High;
-                        textPaint.TextSize = 15;
-                        textPaint.Typeface = SKTypeface.FromFamilyName("Arial");
-                        canvas.DrawIconifiedText("{{fa-envelope color=000000}}", size.Width / 2, size.Height / 2 + textPaint.TextSize/3,
-                            textPaint);
-                    });
-                col.Item()
-                    .Text("felix@flixen.se")
-                    .Bold()
-                    .FontSize(15);
-            });
-            row.AutoItem().Column(col =>
-            {
-                col.Spacing(5);
-                col.Item()
-                    .AlignCenter()
-                    .Height(_iconSize)
-                    .Width(_iconSize)
-                    .Canvas((canvas, size) =>
-                    {
-                        using var paint = new SKPaint
-                        {
-                            Color = SKColor.Parse(_color),
-                            IsStroke = false,
-                            StrokeWidth = 2,
-                            IsAntialias = true
-                        };
-                        canvas.DrawRoundRect(0, 0, size.Width, size.Height, 100, 100, paint);
-
-                        using var textPaint = new SKPaint();
-                        textPaint.TextAlign = SKTextAlign.Center;
-                        textPaint.FilterQuality = SKFilterQuality.High;
-                        textPaint.TextSize = 15;
-                        textPaint.Typeface = SKTypeface.FromFamilyName("Arial");
-                        canvas.DrawIconifiedText("{{fa-phone color=000000}}", size.Width / 2, size.Height / 2 + textPaint.TextSize/3,
-                            textPaint);
-                    });
-
-                col.Item()
-                    .Text("+46737120411")
-                    .Bold()
-                    .FontSize(15);;
-            });
+                row.AutoItem().Component(new ContactItemIcon(_color, item.icon, item.text));
+            }
         });
+    }
 
+    private class ContactItemIcon : IComponent
+    {
+        private readonly string _backgroundColor;
+        private readonly string _iconName;
+        private readonly string _text;
 
-        // container.Table(table =>
-        // {
-        //     table.ColumnsDefinition(def =>
-        //     {
-        //         def.RelativeColumn();
-        //         def.RelativeColumn();
-        //     });
-        //     
-        //     table.Cell()
-        // });
+        public ContactItemIcon(string backgroundColor, string iconName, string text)
+        {
+            _backgroundColor = backgroundColor;
+            _iconName = iconName;
+            _text = text;
+        }
+
+        public void Compose(IContainer container)
+        {
+            container.Column(col =>
+            {
+                col.Spacing(ItemSpacing);
+                col.Item()
+                    .AlignCenter()
+                    .Height(IconSize)
+                    .Width(IconSize)
+                    .Canvas(DrawIconWithBackground);
+                col.Item()
+                    .Text(_text)
+                    .Bold()
+                    .FontSize(IconTextSize);
+            });
+        }
+
+        private void DrawIconWithBackground(SKCanvas canvas, QuestPDF.Helpers.Size size)
+        {
+            using var backgroundPaint = new SKPaint
+            {
+                Color = SKColor.Parse(_backgroundColor),
+                IsStroke = false,
+                IsAntialias = true
+            };
+            canvas.DrawRoundRect(0, 0, size.Width, size.Height, 100, 100, backgroundPaint);
+
+            using var iconPaint = new SKPaint
+            {
+                TextAlign = SKTextAlign.Center,
+                FilterQuality = SKFilterQuality.High,
+                TextSize = IconTextSize,
+                Typeface = SKTypeface.FromFamilyName("Arial")
+            };
+            var iconCode = "{{" + _iconName + " color=000000}}";
+            canvas.DrawIconifiedText(iconCode, size.Width / 2, size.Height / 2 + iconPaint.TextSize / 3, iconPaint);
+        }
     }
 }
