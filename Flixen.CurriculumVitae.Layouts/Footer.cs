@@ -58,33 +58,31 @@ public class Footer : IComponent
                     .AlignCenter()
                     .Height(IconSize)
                     .Width(IconSize)
-                    .Canvas(DrawIconWithBackground);
+                    .Canvas((canvas, size) =>
+                    {
+                        using var backgroundPaint = new SKPaint
+                        {
+                            Color = SKColor.Parse(_backgroundColor),
+                            IsStroke = false,
+                            IsAntialias = true
+                        };
+                        canvas.DrawRoundRect(0, 0, size.Width, size.Height, 100, 100, backgroundPaint);
+
+                        using var iconPaint = new SKPaint
+                        {
+                            TextAlign = SKTextAlign.Center,
+                            FilterQuality = SKFilterQuality.High,
+                            TextSize = IconTextSize,
+                            Typeface = SKTypeface.FromFamilyName("Arial")
+                        };
+                        var iconCode = "{{" + _iconName + " color=000000}}";
+                        canvas.DrawIconifiedText(iconCode, size.Width / 2, size.Height / 2 + iconPaint.TextSize / 3, iconPaint);
+                    });
                 col.Item()
                     .Text(_text)
                     .Bold()
                     .FontSize(IconTextSize);
             });
-        }
-
-        private void DrawIconWithBackground(SKCanvas canvas, QuestPDF.Helpers.Size size)
-        {
-            using var backgroundPaint = new SKPaint
-            {
-                Color = SKColor.Parse(_backgroundColor),
-                IsStroke = false,
-                IsAntialias = true
-            };
-            canvas.DrawRoundRect(0, 0, size.Width, size.Height, 100, 100, backgroundPaint);
-
-            using var iconPaint = new SKPaint
-            {
-                TextAlign = SKTextAlign.Center,
-                FilterQuality = SKFilterQuality.High,
-                TextSize = IconTextSize,
-                Typeface = SKTypeface.FromFamilyName("Arial")
-            };
-            var iconCode = "{{" + _iconName + " color=000000}}";
-            canvas.DrawIconifiedText(iconCode, size.Width / 2, size.Height / 2 + iconPaint.TextSize / 3, iconPaint);
         }
     }
 }
