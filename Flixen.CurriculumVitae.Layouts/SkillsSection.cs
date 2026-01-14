@@ -13,7 +13,6 @@ public class SkillsSection(ResumeModel model) : IComponent
             col.Spacing(10);
             col.Item()
                 .ShowOnce()
-                .PaddingTop(10) //TODO: remove
                 .Text("Skills".ToUpperInvariant())
                 .FontSize(13)
                 .LetterSpacing(0.2f);
