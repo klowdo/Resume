@@ -3,7 +3,7 @@ namespace Flixen.CurriculumVitae.Contracts;
 public class ResumeModel
 {
     public required ResumeColors Colors { get; set; }
-    public required ContactInforation Contact { get; set; }
+    public required ContactInformation Contact { get; set; }
     public string Image { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string MainText { get; set; } = string.Empty;

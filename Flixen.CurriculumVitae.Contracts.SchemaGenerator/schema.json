@@ -8,7 +8,7 @@
       "$ref": "#/definitions/ResumeColors"
     },
     "contact": {
-      "$ref": "#/definitions/ContactInforation"
+      "$ref": "#/definitions/ContactInformation"
     },
     "image": {
       "type": "string"
@@ -54,7 +54,7 @@
         }
       }
     },
-    "ContactInforation": {
+    "ContactInformation": {
       "type": "object",
       "additionalProperties": false,
       "properties": {

@@ -1,6 +1,6 @@
 ﻿namespace Flixen.CurriculumVitae.Contracts;
 
-public class ContactInforation
+public class ContactInformation
 {
     public string Name { get; set; } = string.Empty;
     public string Phone { get; set; } = string.Empty;
