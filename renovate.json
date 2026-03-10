@@ -2,5 +2,35 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "groupName": "SkiaSharp",
+      "matchPackagePatterns": ["^SkiaSharp"],
+      "matchManagers": ["nuget"]
+    },
+    {
+      "groupName": "HarfBuzz",
+      "matchPackagePatterns": ["^HarfBuzzSharp"],
+      "matchManagers": ["nuget"]
+    },
+    {
+      "groupName": "NJsonSchema",
+      "matchPackagePatterns": ["^NJsonSchema"],
+      "matchManagers": ["nuget"]
+    },
+    {
+      "groupName": "GitHub Actions",
+      "matchManagers": ["github-actions"]
+    },
+    {
+      "matchManagers": ["nuget"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ],
+  "nix": {
+    "enabled": true
+  }
 }
