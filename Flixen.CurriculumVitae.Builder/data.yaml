@@ -33,8 +33,16 @@ skills:
 
 workItems:
   - name: Freelancer
+    place: Worldstream / Flixen AB
+    from: 2025-06-02
+    items:
+      - Infrastructure provider based in the Netherlands.
+      - Built an event-sourced system where traceability was a key focus, written in Go for performance.
+      - "Technologies used: Go, event sourcing, Network switches, Docker."
+  - name: Freelancer
     place: Volvo / Flixen AB
     from: 2023-07-03
+    to: 2025-06-01
     items:
       - Part of the Energy Device Cloud team at Volvo.
       - Built an OCPP server in .NET using the Orleans actor system, optimized for high performance and scalability.
@@ -54,7 +62,7 @@ workItems:
     from: 2022-03-15
     to: 2023-02-15
     items:
-      - Infrastructure provider based in the Netherlands (same client as at Evolve Technology).
+      - Infrastructure provider based in the Netherlands.
       - Built an event-sourced system where traceability was a key focus, written in Go for performance.
       - "Technologies used: Go, event sourcing, Docker."
 
