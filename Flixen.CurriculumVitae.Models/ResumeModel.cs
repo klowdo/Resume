@@ -10,4 +10,5 @@ public class ResumeModel
     public WorkItem[] WorkItems { get; set; } = Array.Empty<WorkItem>();
     public string[] Skills { get; set; } = Array.Empty<string>();
     public FontInfo[] Fonts { get; set; } = Array.Empty<FontInfo>();
+    public bool Anonymous { get; set; }
 }

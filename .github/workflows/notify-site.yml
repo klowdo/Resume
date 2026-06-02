@@ -1,0 +1,19 @@
+name: Notify website of data change
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - profile.yaml
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch data-updated to klowdo.github.io
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
+          repository: klowdo/klowdo.github.io
+          event-type: data-updated
