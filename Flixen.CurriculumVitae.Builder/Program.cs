@@ -13,8 +13,19 @@ QuestPDF.Settings.License = LicenseType.Community;
 
 var fileOption = new Option<FileInfo>(
     name: "--config-file",
-    description: "The path to the configuration file",
-    getDefaultValue: () =>  new FileInfo("./data.yaml")
+    description: "The path to the resume data file",
+    getDefaultValue: () =>  new FileInfo("../profile.yaml")
+);
+
+var themeOption = new Option<FileInfo>(
+    name: "--theme-file",
+    description: "The path to the theme file (colors, fonts, image)",
+    getDefaultValue: () => new FileInfo("./theme.yaml")
+);
+
+var anonymousOption = new Option<bool>(
+    name: "--anonymous",
+    description: "Generate resume without contact information"
 );
 
 var outputOption = new Option<FileInfo>(
@@ -31,31 +42,38 @@ var rootCommand = new RootCommand("A command line tool to generate a PDF resume"
     writeCommand
 };
 rootCommand.AddOption(fileOption);
+rootCommand.AddOption(themeOption);
+rootCommand.AddOption(anonymousOption);
 
-liveCommand.SetHandler((configFile) =>
+liveCommand.SetHandler((configFile, themeFile, anonymous) =>
 {
-    var document = CreateDocument(configFile);
+    var document = CreateDocument(configFile, themeFile, anonymous);
     document.ShowInPreviewer();
-}, fileOption);
+}, fileOption, themeOption, anonymousOption);
 
-writeCommand.SetHandler((configFile, output) =>
+writeCommand.SetHandler((configFile, themeFile, output, anonymous) =>
 {
-    var document = CreateDocument(configFile);
+    var document = CreateDocument(configFile, themeFile, anonymous);
     output.Directory?.Create();
     document.GeneratePdf(output.FullName);
-}, fileOption, outputOption);
+}, fileOption, themeOption, outputOption, anonymousOption);
 
-return await rootCommand.InvokeAsync(args); 
+return await rootCommand.InvokeAsync(args);
 
-DefaultCvDocument CreateDocument(FileInfo configFile)
+DefaultCvDocument CreateDocument(FileInfo configFile, FileInfo themeFile, bool anonymous)
 {
     var deserializer = new DeserializerBuilder()
-        .WithNamingConvention(CamelCaseNamingConvention.Instance) // see height_in_inches in sample yml 
+        .WithNamingConvention(CamelCaseNamingConvention.Instance)
+        .IgnoreUnmatchedProperties()
         .Build();
 
-    using var reader = configFile.OpenRead();
-    using var stream = new StreamReader(reader);
-    var options = deserializer.Deserialize<ResumeModel>(stream);
+    var options = Deserialize<ResumeModel>(deserializer, configFile);
+    var theme = Deserialize<ThemeModel>(deserializer, themeFile);
+
+    options.Colors = theme.Colors;
+    options.Fonts = theme.Fonts;
+    options.Image = theme.Image;
+    options.Anonymous = anonymous;
 
     FontLoader.LoadFront(options.Fonts);
     SKTextRunLookup.Instance.AddFontAwesome();
@@ -63,4 +81,11 @@ DefaultCvDocument CreateDocument(FileInfo configFile)
     FontManager.RegisterFont(FontAwesome.GetFontStream());
     var defaultCvDocument = new DefaultCvDocument(options);
     return defaultCvDocument;
+}
+
+static T Deserialize<T>(IDeserializer deserializer, FileInfo file)
+{
+    using var reader = file.OpenRead();
+    using var stream = new StreamReader(reader);
+    return deserializer.Deserialize<T>(stream);
 }

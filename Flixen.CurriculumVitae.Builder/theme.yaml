@@ -1,0 +1,12 @@
+colors:
+  main: "#000000"
+  background: "#FFFFFF"
+  mainTextColor: "#FFFFFF"
+fonts:
+  - path: Resources/Bebas Neue
+  - path: Resources/Montserrat/static
+  - path: Resources/fa-regular-400.ttf
+    name: glyphs
+  - path: Resources/fa-solid-900.ttf
+    name: solid-glyphs
+image: Resources/felix_evolve_small.jpg

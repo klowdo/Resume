@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
@@ -34,13 +34,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Include="data.yaml;Resources/*" />
-    </ItemGroup> 
+        <Watch Include="theme.yaml;../profile.yaml;Resources/*" />
+    </ItemGroup>
     <ItemGroup>
-      <None Update="data.yaml">
+      <None Update="theme.yaml">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-    </ItemGroup> 
+    </ItemGroup>
     <ItemGroup>
       <Folder Include="Resources\Bebas Neue\" />
     </ItemGroup>

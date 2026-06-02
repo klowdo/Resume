@@ -1,19 +1,4 @@
-# yaml-language-server: $schema=../Flixen.CurriculumVitae.Contracts.SchemaGenerator/schema.json
-colors:
-  main: "#000000"
-  background: "#FFFFFF"
-  mainTextColor: "#FFFFFF"
-fonts:
-  - path: Resources/Bebas Neue
-  - path: Resources/Montserrat/static
-  - path: Resources/fa-regular-400.ttf
-    name: glyphs
-  - path: Resources/fa-solid-900.ttf
-    name: solid-glyphs
-image: Resources/felix_evolve_small.jpg
-title: Friendly Developer
-mainText: I'm a solution-driven person, always looking for improvement. I love new technology and constantly stay up to date with what's happening in the industry.
-
+# yaml-language-server: $schema=./Flixen.CurriculumVitae.Contracts.SchemaGenerator/schema.json
 contact:
   name: Felix Svensson
   address: |-
@@ -21,6 +6,9 @@ contact:
     425 34 Hisings Kärra
   email: felix@flixen.se
   phone: "+46737120411"
+
+title: Friendly Developer
+mainText: I'm a solution-driven person, always looking for improvement. I love new technology and constantly stay up to date with what's happening in the industry.
 
 skills:
   - C#
@@ -111,3 +99,34 @@ workItems:
       - Built, tested, and deployed services.
       - Monitored, reported, and updated cloud service components.
       - Managed systems using TeamCity, Jira, and Octopus Deploy.
+
+# Fields below are consumed by the website (klowdo.github.io); the resume builder ignores them.
+website: flixen.se
+github:
+  label: klowdo
+  url: https://github.com/klowdo
+linkedin:
+  label: felix-svensson
+  url: https://linkedin.com/in/felix-svensson
+resume:
+  label: resume.pdf
+  url: https://github.com/klowdo/Resume/releases/latest/download/resume.pdf
+languages:
+  - C#/.NET
+  - Go
+  - TypeScript
+interests:
+  - Event Sourcing
+  - Clean Architecture
+  - Pizza
+projects:
+  - name: Resume in C#
+    url: https://github.com/klowdo/resume
+  - name: NixOS Config
+    url: https://github.com/klowdo/nixos-config
+  - name: SalaryCalculator
+    url: https://github.com/klowdo/SalaryCalculator
+  - name: PaymentSystemCqrs
+    url: https://github.com/klowdo/PaymentSystemCqrs
+  - name: TollCalculator
+    url: https://github.com/klowdo/TollCalculator

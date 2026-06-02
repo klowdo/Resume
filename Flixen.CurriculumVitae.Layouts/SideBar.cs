@@ -27,15 +27,18 @@ public class SideBar(ResumeModel model) : IComponent
                     .PaddingTop(20)
                     .Component(new ProfilePicture(model));
 
-                side.Item()
-                    .PaddingTop(20)
-                    .PaddingHorizontal(paddingHorizontal)
-                    .Component(new ContactItems(new[]
+                if (!model.Anonymous)
+                {
+                    side.Item()
+                        .PaddingTop(20)
+                        .PaddingHorizontal(paddingHorizontal)
+                        .Component(new ContactItems(new[]
                     {
                         ("", contact.Phone),
                         ("", contact.Email),
                         ("", contact.Address)
                     }));
+                }
 
                 side.Item()
                     .PaddingHorizontal(paddingHorizontal)

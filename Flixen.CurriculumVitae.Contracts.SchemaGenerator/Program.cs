@@ -13,6 +13,7 @@ if (args.Length < 1)
 
 var settings = new SystemTextJsonSchemaGeneratorSettings()
 {
+    AlwaysAllowAdditionalObjectProperties = true,
     SerializerOptions = new JsonSerializerOptions
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase

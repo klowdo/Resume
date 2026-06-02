@@ -23,6 +23,11 @@
         packages = with pkgs; [
           dotnet-sdk_10
         ];
+
+        LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+          pkgs.fontconfig
+          pkgs.freetype
+        ];
       };
     });
   };
