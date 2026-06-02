@@ -54,3 +54,12 @@ jobs:
           --theme-file ${{ env.THEME_FILE }}
           -- write
           --output ../github-release/folder/resume.pdf
+
+      # Fail if the committed schema drifted from ResumeModel
+      - name: Check schema up to date
+        run: |
+          dotnet run --project Flixen.CurriculumVitae.Contracts.SchemaGenerator \
+            --configuration ${{ env.BUILD_CONFIGURATION }} \
+            --no-launch-profile \
+            -- ./Flixen.CurriculumVitae.Contracts.SchemaGenerator/schema.json
+          git diff --exit-code -- Flixen.CurriculumVitae.Contracts.SchemaGenerator/schema.json

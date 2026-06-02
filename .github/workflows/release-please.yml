@@ -1,0 +1,82 @@
+name: release-please
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  DOTNET_VERSION: '10.x'
+  PROJECT_NAME: 'Flixen.CurriculumVitae.Builder'
+  BUILD_CONFIGURATION: Release
+  CONFIG_FILE: '../profile.yaml'
+  THEME_FILE: './theme.yaml'
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-pdf:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build solution
+        run: >-
+          dotnet build
+          --no-restore
+          --configuration ${{ env.BUILD_CONFIGURATION }}
+
+      - name: Generate PDF
+        working-directory: ./${{ env.PROJECT_NAME }}
+        run: >-
+          dotnet run
+          --configuration ${{ env.BUILD_CONFIGURATION }}
+          --config-file ${{ env.CONFIG_FILE }}
+          --theme-file ${{ env.THEME_FILE }}
+          -- write
+          --output ../github-release/folder/resume.pdf
+
+      - name: Generate anonymous PDF
+        working-directory: ./${{ env.PROJECT_NAME }}
+        run: >-
+          dotnet run
+          --configuration ${{ env.BUILD_CONFIGURATION }}
+          --config-file ${{ env.CONFIG_FILE }}
+          --theme-file ${{ env.THEME_FILE }}
+          --anonymous
+          -- write
+          --output ../github-release/folder/resume-anonymous.pdf
+
+      - name: Upload PDFs to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.release-please.outputs.tag_name }}
+          files: |
+            ./github-release/folder/resume.pdf
+            ./github-release/folder/resume-anonymous.pdf
+          token: ${{ secrets.GITHUB_TOKEN }}
