@@ -1,64 +1,72 @@
 ﻿using Flixen.CurriculumVitae.Contracts;
 using Flixen.CurriculumVitae.Layouts;
-using QuestPDF.Drawing;
 using System.CommandLine;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using QuestPDF.Previewer;
-using SkiaSharp.Extended.Iconify;
+using QuestPDF.Companion;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
 QuestPDF.Settings.License = LicenseType.Community;
 
-var fileOption = new Option<FileInfo>(
-    name: "--config-file",
-    description: "The path to the resume data file",
-    getDefaultValue: () =>  new FileInfo("../profile.yaml")
-);
+var fileOption = new Option<FileInfo>("--config-file")
+{
+    Description = "The path to the resume data file",
+    DefaultValueFactory = _ => new FileInfo("../profile.yaml"),
+    Recursive = true
+};
 
-var themeOption = new Option<FileInfo>(
-    name: "--theme-file",
-    description: "The path to the theme file (colors, fonts, image)",
-    getDefaultValue: () => new FileInfo("./theme.yaml")
-);
+var themeOption = new Option<FileInfo>("--theme-file")
+{
+    Description = "The path to the theme file (colors, fonts, image)",
+    DefaultValueFactory = _ => new FileInfo("./theme.yaml"),
+    Recursive = true
+};
 
-var anonymousOption = new Option<bool>(
-    name: "--anonymous",
-    description: "Generate resume without contact information"
-);
+var anonymousOption = new Option<bool>("--anonymous")
+{
+    Description = "Generate resume without contact information",
+    Recursive = true
+};
 
-var outputOption = new Option<FileInfo>(
-    name: "--output",
-    description: "The path to the configuration file"
-) { IsRequired = true };
+var outputOption = new Option<FileInfo>("--output")
+{
+    Description = "The path to the output PDF file",
+    Required = true
+};
 
 var liveCommand = new Command("live", "Starts a live preview of the resume");
 var writeCommand = new Command("write", "Writes the resume to a file");
-writeCommand.AddOption(outputOption);
-var rootCommand = new RootCommand("A command line tool to generate a PDF resume")
-{
-    liveCommand,
-    writeCommand
-};
-rootCommand.AddOption(fileOption);
-rootCommand.AddOption(themeOption);
-rootCommand.AddOption(anonymousOption);
+writeCommand.Options.Add(outputOption);
 
-liveCommand.SetHandler((configFile, themeFile, anonymous) =>
-{
-    var document = CreateDocument(configFile, themeFile, anonymous);
-    document.ShowInPreviewer();
-}, fileOption, themeOption, anonymousOption);
+var rootCommand = new RootCommand("A command line tool to generate a PDF resume");
+rootCommand.Options.Add(fileOption);
+rootCommand.Options.Add(themeOption);
+rootCommand.Options.Add(anonymousOption);
+rootCommand.Subcommands.Add(liveCommand);
+rootCommand.Subcommands.Add(writeCommand);
 
-writeCommand.SetHandler((configFile, themeFile, output, anonymous) =>
+liveCommand.SetAction(parseResult =>
 {
-    var document = CreateDocument(configFile, themeFile, anonymous);
+    var document = CreateDocument(
+        parseResult.GetValue(fileOption)!,
+        parseResult.GetValue(themeOption)!,
+        parseResult.GetValue(anonymousOption));
+    document.ShowInCompanion();
+});
+
+writeCommand.SetAction(parseResult =>
+{
+    var document = CreateDocument(
+        parseResult.GetValue(fileOption)!,
+        parseResult.GetValue(themeOption)!,
+        parseResult.GetValue(anonymousOption));
+    var output = parseResult.GetValue(outputOption)!;
     output.Directory?.Create();
     document.GeneratePdf(output.FullName);
-}, fileOption, themeOption, outputOption, anonymousOption);
+});
 
-return await rootCommand.InvokeAsync(args);
+return rootCommand.Parse(args).Invoke();
 
 DefaultCvDocument CreateDocument(FileInfo configFile, FileInfo themeFile, bool anonymous)
 {
@@ -76,9 +84,7 @@ DefaultCvDocument CreateDocument(FileInfo configFile, FileInfo themeFile, bool a
     options.Anonymous = anonymous;
 
     FontLoader.LoadFront(options.Fonts);
-    SKTextRunLookup.Instance.AddFontAwesome();
     QuestPDF.Settings.CheckIfAllTextGlyphsAreAvailable = true;
-    FontManager.RegisterFont(FontAwesome.GetFontStream());
     var defaultCvDocument = new DefaultCvDocument(options);
     return defaultCvDocument;
 }

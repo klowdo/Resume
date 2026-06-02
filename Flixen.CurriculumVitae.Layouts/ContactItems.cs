@@ -22,8 +22,7 @@ public class ContactItems(IEnumerable<(string item, string text)> items) : IComp
                     .AlignTop()
                     .PaddingBottom(Padding)
                     .Text(icon)
-                    .FontFamily("solid-glyphs")
-                    .Fallback(x => x.FontFamily("glyphs"));
+                    .FontFamily("solid-glyphs", "glyphs");
                 table.Cell()
                     .AlignTop()
                     .PaddingBottom(Padding)
