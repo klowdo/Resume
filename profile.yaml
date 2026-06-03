@@ -13,7 +13,7 @@ mainText: I'm a solution-driven person, always looking for improvement. I love n
 skills:
   - C#
   - Go
-  - Linux/NixOs
+  - Linux/NixOS
   - DDD
   - Event Sourcing
   - Azure
@@ -26,7 +26,7 @@ workItems:
     items:
       - Infrastructure provider based in the Netherlands.
       - Built an event-sourced system where traceability was a key focus, written in Go for performance.
-      - "Technologies used: Go, event sourcing, Network switches, Docker."
+      - "Technologies used: Go, event sourcing, network switches, Docker."
   - name: Freelancer
     place: Volvo / Flixen AB
     from: 2023-07-03
