@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="QuestPDF" Version="2026.7.0" />
+        <PackageReference Include="QuestPDF" Version="2026.7.1" />
         <PackageReference Include="System.CommandLine" Version="2.0.9" />
         <PackageReference Include="YamlDotNet" Version="18.1.0" />
     </ItemGroup>
