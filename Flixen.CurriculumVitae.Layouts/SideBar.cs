@@ -6,6 +6,8 @@ namespace Flixen.CurriculumVitae.Layouts;
 
 public class SideBar(ResumeModel model) : IComponent
 {
+    private const int PaddingHorizontal = 10;
+
     public void Compose(IContainer container)
     {
         container
@@ -20,35 +22,46 @@ public class SideBar(ResumeModel model) : IComponent
             .Padding(20)
             .Column(side =>
             {
-                side.Spacing(10);
+                side.Spacing(14);
                 var contact = model.Contact;
-                var paddingHorizontal = 10;
+
                 side.Item()
+                    .ShowOnce()
                     .PaddingTop(20)
                     .Component(new ProfilePicture(model));
 
                 if (!model.Anonymous)
                 {
                     side.Item()
+                        .ShowOnce()
                         .PaddingTop(20)
-                        .PaddingHorizontal(paddingHorizontal)
+                        .PaddingHorizontal(PaddingHorizontal)
                         .Component(new ContactItems(new[]
-                    {
-                        ("", contact.Phone),
-                        ("", contact.Email),
-                        ("", contact.Address)
-                    }));
+                        {
+                            ("", contact.Phone),
+                            ("", contact.Email),
+                            ("", contact.Location),
+                            ("", contact.Github)
+                        }));
                 }
 
                 side.Item()
-                    .PaddingHorizontal(paddingHorizontal)
+                    .ShowOnce()
+                    .PaddingHorizontal(PaddingHorizontal)
                     .LineHorizontal(10, Unit.Mil)
                     .LineColor(model.Colors.MainTextColor);
 
                 side.Item()
-                    .PaddingTop(10)
-                    .PaddingHorizontal(paddingHorizontal)
+                    .PaddingHorizontal(PaddingHorizontal)
                     .Component(new SkillsSection(model));
+
+                foreach (var section in model.Sections)
+                {
+                    side.Item()
+                        .ShowEntire()
+                        .PaddingHorizontal(PaddingHorizontal)
+                        .Component(new SideSectionComponent(section));
+                }
             });
     }
 }

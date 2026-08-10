@@ -6,28 +6,54 @@ namespace Flixen.CurriculumVitae.Layouts;
 
 public class WorkItemsComponent(ResumeModel model) : IComponent
 {
+    private const float EmployerPadding = 30f;
+    private const float EngagementPadding = 22f;
+
     public void Compose(IContainer container)
     {
-        var padding = 30f;
-        var spacing = 15;
-        container
-            .Column(col =>
+        container.Column(col =>
+        {
+            col.Spacing(16);
+            foreach (var employer in model.Employers)
             {
-                col.Spacing(spacing);
-                foreach (var workItem in model.WorkItems)
+                col.Item().Layers(layers =>
                 {
-                    col.Item()
-                        .ShowEntire()
-                        .Layers(layers =>
+                    layers.PrimaryLayer()
+                        .PaddingLeft(EmployerPadding)
+                        .Column(employerCol =>
                         {
-                            layers.PrimaryLayer()
-                                .PaddingLeft(padding)
-                                .Component(new WorkComponent(workItem));
+                            employerCol.Spacing(10);
+                            employerCol.Item().Column(header =>
+                            {
+                                header.Item()
+                                    .Text(employer.Name)
+                                    .Bold()
+                                    .FontSize(12);
+                                header.Item()
+                                    .Text(employer.Period)
+                                    .FontColor(model.Colors.Muted)
+                                    .Medium();
+                            });
 
-                            layers.Layer()
-                                .Component(new DotsAndLines(padding));
+                            foreach (var engagement in employer.Engagements)
+                            {
+                                employerCol.Item()
+                                    .ShowEntire()
+                                    .Layers(engagementLayers =>
+                                    {
+                                        engagementLayers.PrimaryLayer()
+                                            .PaddingLeft(EngagementPadding)
+                                            .Component(new WorkComponent(engagement, model.Colors.Muted));
+
+                                        engagementLayers.Layer()
+                                            .Component(new DotsAndLines(EngagementPadding, 2.5f));
+                                    });
+                            }
                         });
-                }
-            });
+
+                    layers.Layer().Component(new DotsAndLines(EmployerPadding, 5f));
+                });
+            }
+        });
     }
 }

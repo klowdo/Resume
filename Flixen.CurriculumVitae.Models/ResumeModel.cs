@@ -7,8 +7,9 @@ public class ResumeModel
     public string Image { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string MainText { get; set; } = string.Empty;
-    public WorkItem[] WorkItems { get; set; } = Array.Empty<WorkItem>();
-    public string[] Skills { get; set; } = Array.Empty<string>();
-    public FontInfo[] Fonts { get; set; } = Array.Empty<FontInfo>();
+    public Employer[] Employers { get; set; } = [];
+    public SkillGroup[] Skills { get; set; } = [];
+    public SideSection[] Sections { get; set; } = [];
+    public FontInfo[] Fonts { get; set; } = [];
     public bool Anonymous { get; set; }
 }
