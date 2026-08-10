@@ -21,7 +21,7 @@ public class DefaultCvDocument(ResumeModel model) : IDocument
                     row.RelativeItem(2)
                         .Component(new SideBar(model));
             
-                    row.RelativeItem(3)
+                    row.RelativeItem(4)
                         .Component(new MainPage(model));
                 });
         });
