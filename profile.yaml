@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=./Flixen.CurriculumVitae.Contracts.SchemaGenerator/schema.json
+---
 contact:
   name: Felix Svensson
   location: Göteborg
@@ -7,7 +8,8 @@ contact:
   github: github.com/klowdo
 
 title: Friendly Developer
-mainText: I'm a solution-driven person, always looking for improvement. I love new technology and constantly stay up to date with what's happening in the industry.
+mainText: "Backend developer with 10+ years building distributed, event-sourced systems in Go and .NET — core banking, EV charging platforms, and network infrastructure. I like working close to the metal: Linux, protocols, and owning the operational side of what I ship."
+
 
 skills:
   - category: Languages
@@ -25,7 +27,6 @@ skills:
     items:
       - Azure
       - AWS
-      - Terraform
       - Docker
       - Proxmox
   - category: Networking
@@ -53,7 +54,7 @@ employers:
           - Infrastructure and hosting handled in AWS using Terraform for IaC.
       - client: Chargenode EU
         role: Backend Developer
-        period: 2023
+        period: 2023 - 2023
         items:
           - EV charger provider developing everything in-house, from hardware to customer portal and charger protocols.
           - Built a highly scalable system in Azure for connecting 100k+ chargers using the actor model.
@@ -70,7 +71,7 @@ employers:
           - Software development in agile teams, with focus on identity and security management.
       - client: Worldstream
         role: Senior Developer
-        period: 2022
+        period: 2022 - 2023
         items:
           - Netherlands-based infrastructure provider. Event-sourced system built in Go for performance and traceability.
 
