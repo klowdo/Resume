@@ -23,31 +23,27 @@ public class WorkItemsComponent(ResumeModel model) : IComponent
                         .Column(employerCol =>
                         {
                             employerCol.Spacing(10);
-                            employerCol.Item().Column(header =>
+                            employerCol.Item().ShowEntire().Column(intro =>
                             {
-                                header.Item()
+                                intro.Spacing(10);
+                                intro.Item()
                                     .Text(employer.Name)
                                     .Bold()
                                     .FontSize(12);
-                                header.Item()
+                                intro.Item()
                                     .Text(employer.Period)
                                     .FontColor(model.Colors.Muted)
                                     .Medium();
+
+                                if (employer.Engagements.Length > 0)
+                                {
+                                    Engagement(intro.Item(), employer.Engagements[0]);
+                                }
                             });
 
-                            foreach (var engagement in employer.Engagements)
+                            foreach (var engagement in employer.Engagements.Skip(1))
                             {
-                                employerCol.Item()
-                                    .ShowEntire()
-                                    .Layers(engagementLayers =>
-                                    {
-                                        engagementLayers.PrimaryLayer()
-                                            .PaddingLeft(EngagementPadding)
-                                            .Component(new WorkComponent(engagement, model.Colors.Muted));
-
-                                        engagementLayers.Layer()
-                                            .Component(new DotsAndLines(EngagementPadding, 2.5f));
-                                    });
+                                Engagement(employerCol.Item(), engagement);
                             }
                         });
 
@@ -56,4 +52,17 @@ public class WorkItemsComponent(ResumeModel model) : IComponent
             }
         });
     }
+
+    private void Engagement(IContainer container, Engagement engagement) =>
+        container
+            .ShowEntire()
+            .Layers(layers =>
+            {
+                layers.PrimaryLayer()
+                    .PaddingLeft(EngagementPadding)
+                    .Component(new WorkComponent(engagement, model.Colors.Muted));
+
+                layers.Layer()
+                    .Component(new DotsAndLines(EngagementPadding, 2.5f));
+            });
 }
