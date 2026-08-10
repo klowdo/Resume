@@ -22,6 +22,7 @@
       default = pkgs.mkShellNoCC {
         packages = with pkgs; [
           dotnet-sdk_10
+          just
         ];
 
         LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
