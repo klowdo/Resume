@@ -10,29 +10,49 @@ public class SkillsSection(ResumeModel model) : IComponent
     {
         container.Column(col =>
         {
-            col.Spacing(10);
-            col.Item()
-                .ShowOnce()
-                .PaddingTop(10) //TODO: remove
-                .Text("Skills".ToUpperInvariant())
-                .FontSize(13)
-                .LetterSpacing(0.2f);
-            col.Item()
-                .ShowOnce()
-                .Column(column =>
+            col.Spacing(8);
+            SideSectionComponent.Heading(col.Item(), "Skills");
+
+            foreach (var group in model.Skills)
+            {
+                col.Item().Column(groupCol =>
                 {
-                    foreach (var skill in model.Skills)
-                    {
-                        column.Spacing(4);
-                        column.Item()
-                            .Row(row =>
-                            {
-                                row.Spacing(8);
-                                row.AutoItem().Text("•").Bold(); // text or image
-                                row.RelativeItem().Text(skill);
-                            });
-                    }
+                    groupCol.Spacing(3);
+                    groupCol.Item().Text(group.Category).SemiBold();
+                    SideSectionComponent.Bullets(groupCol.Item(), group.Items);
                 });
+            }
         });
     }
+}
+
+public class SideSectionComponent(SideSection section) : IComponent
+{
+    public void Compose(IContainer container)
+    {
+        container.Column(col =>
+        {
+            col.Spacing(8);
+            Heading(col.Item(), section.Title);
+            Bullets(col.Item(), section.Items);
+        });
+    }
+
+    public static void Heading(IContainer container, string title) =>
+        container.Text(title.ToUpperInvariant()).FontSize(13);
+
+    public static void Bullets(IContainer container, IEnumerable<string> items) =>
+        container.Column(col =>
+        {
+            col.Spacing(4);
+            foreach (var item in items)
+            {
+                col.Item().Row(row =>
+                {
+                    row.Spacing(8);
+                    row.AutoItem().Text("•").Bold();
+                    row.RelativeItem().Text(item);
+                });
+            }
+        });
 }

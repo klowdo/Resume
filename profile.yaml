@@ -1,104 +1,106 @@
 # yaml-language-server: $schema=./Flixen.CurriculumVitae.Contracts.SchemaGenerator/schema.json
 contact:
   name: Felix Svensson
-  address: |-
-    Lillekärr Norra 56,
-    425 34 Hisings Kärra
+  location: Göteborg
   email: felix@flixen.se
   phone: "+46737120411"
+  github: github.com/klowdo
 
 title: Friendly Developer
 mainText: I'm a solution-driven person, always looking for improvement. I love new technology and constantly stay up to date with what's happening in the industry.
 
 skills:
-  - C#
-  - Go
-  - Linux/NixOS
-  - DDD
-  - Event Sourcing
-  - Azure
-  - AWS
+  - category: Languages
+    items:
+      - C#/.NET
+      - Go
+      - TypeScript
+  - category: Architecture
+    items:
+      - Domain-Driven Design
+      - Event Sourcing
+      - Actor model
+  - category: Infrastructure
+    items:
+      - Azure
+      - AWS
+      - Terraform
+      - Docker
+  - category: Networking
+    items:
+      - Linux/NixOS
+      - Network switches
+      - Telemetry and monitoring
 
-workItems:
-  - name: Freelancer
-    place: Worldstream / Flixen AB
-    from: 2025-06-02
-    items:
-      - Infrastructure provider based in the Netherlands.
-      - Built an event-sourced system where traceability was a key focus, written in Go for performance.
-      - "Technologies used: Go, event sourcing, network switches, Docker."
-  - name: Freelancer
-    place: Volvo / Flixen AB
-    from: 2023-07-03
-    to: 2025-06-01
-    items:
-      - Part of the Energy Device Cloud team at Volvo.
-      - Built an OCPP server in .NET using the Orleans actor system, optimized for high performance and scalability.
-      - Infrastructure and hosting handled in AWS using Terraform for IaC.
+employers:
+  - name: Flixen AB
+    period: 2022 - Present
+    engagements:
+      - client: Worldstream
+        role: Backend Developer
+        period: 2022 - 2023, 2025 - Present
+        items:
+          - Infrastructure provider based in the Netherlands.
+          - Built an event-sourced system where traceability was a key focus, written in Go for performance.
+          - "Technologies used: Go, event sourcing, network switches, Docker."
+      - client: Volvo
+        role: Senior Backend Developer
+        period: 2023 - 2025
+        items:
+          - Part of the Energy Device Cloud team at Volvo.
+          - Built an OCPP server in .NET using the Orleans actor system, optimized for high performance and scalability.
+          - Infrastructure and hosting handled in AWS using Terraform for IaC.
+      - client: Chargenode EU
+        role: Backend Developer
+        period: 2023
+        items:
+          - EV charger provider developing everything in-house, from hardware to customer portal and charger protocols.
+          - Built a highly scalable system in Azure for connecting 100k+ chargers using the actor model.
+          - Maintained and supported mainline development of the existing .NET system.
 
-  - name: Freelancer
-    place: Chargenode EU / Flixen AB
-    from: 2023-02-23
-    to: 2023-06-28
-    items:
-      - The client is an EV charger provider that develops everything in-house—from hardware to customer portal and charger protocols.
-      - Focused on creating a highly scalable system in Azure for connecting 100k+ chargers using the actor model.
-      - Also maintained and supported the mainline development of the existing system written in .NET.
+  - name: AFRY
+    period: 2020 - 2022
+    engagements:
+      - client: Swedish med-tech company
+        role: Senior Developer
+        period: 2020 - 2022
+        items:
+          - Proactive patient care through live health monitoring, written in C# and hosted in Microsoft Azure.
+          - Software development in agile teams, with focus on identity and security management.
+      - client: Worldstream
+        role: Senior Developer
+        period: 2022
+        items:
+          - Netherlands-based infrastructure provider. Event-sourced system built in Go for performance and traceability.
 
-  - name: Freelancer
-    place: Worldstream / Flixen AB
-    from: 2022-03-15
-    to: 2023-02-15
-    items:
-      - Infrastructure provider based in the Netherlands.
-      - Built an event-sourced system where traceability was a key focus, written in Go for performance.
-      - "Technologies used: Go, event sourcing, Docker."
+  - name: CXC (Deloitte Australia)
+    period: 2019 - 2020
+    engagements:
+      - role: Developer, Cloud Integration
+        period: 2019 - 2020
+        items:
+          - Application development stream lead, with technical analysis and troubleshooting at cloud infrastructure level.
+          - Cross-team collaboration with Deloitte, clients and third-party vendors, including ITSM incident and problem management.
 
-  - name: Senior Developer
-    place: Evolve Technology / AFRY
-    from: 2020-03-01
-    to: 2022-08-12
-    items:
-      - Software development in agile teams.
-      - Identity and security management.
-      - Productivity and tooling improvements.
-      - First client was a Swedish med-tech company focused on proactive patient care through live health monitoring. The system was written in C# and deployed in Microsoft Azure.
-      - Second client was a Netherlands-based infrastructure provider. The system was event-sourced and built in Go for performance and traceability.
+  - name: Collector Bank
+    period: 2015 - 2019
+    engagements:
+      - role: Tech Lead
+        period: 2016 - 2019
+        items:
+          - Co-developed the core banking system and operated it in production for high availability.
+          - Managed cloud infrastructure, security and CI/CD pipelines using Azure DevOps and Octopus Deploy.
+      - role: Developer, Cloud Integration
+        period: 2015 - 2016
+        items:
+          - Analysed, built and deployed cloud service components together with stakeholders.
 
-  - name: Azure Integration
-    place: CXC (Deloitte Australia)
-    from: 2019-05-27
-    to: 2020-02-15
+sections:
+  - title: Personal projects
     items:
-      - Application development stream lead.
-      - Technical analysis and troubleshooting at the cloud infrastructure level.
-      - Platform configuration for both implementing changes and resolving issues.
-      - Cross-team collaboration with Deloitte, clients, and third-party vendors.
-      - ITSM execution, including Incident and Problem Management using VSTS and Jira.
-      - Regular reporting and escalation of technical issues.
-      - Monitoring using various modern tools including event/log managers.
-
-  - name: Tech Lead
-    place: Collector Bank
-    from: 2016-01-04
-    to: 2019-01-04
-    items:
-      - Co-developed the core banking system.
-      - Monitored and operated production cloud systems to ensure high availability.
-      - Managed cloud infrastructure and security.
-      - Built and maintained CI/CD pipelines.
-      - Investigated new technologies to improve performance, reliability, and security.
-      - Used Azure DevOps and Octopus Deploy for operations and deployment.
-
-  - name: Azure Integration
-    place: Collector Bank
-    from: 2015-05-03
-    to: 2016-06-04
-    items:
-      - Direct communication with stakeholders and analysis of new components to be developed or migrated.
-      - Built, tested, and deployed services.
-      - Monitored, reported, and updated cloud service components.
-      - Managed systems using TeamCity, Jira, and Octopus Deploy.
+      - Network telemetry pipeline for switches and access points, with dashboards and alerting.
+      - NixOS configuration for all machines, declarative and reproducible.
+      - Home Assistant automation for a self-hosted smart home.
 
 # Fields below are consumed by the website (klowdo.github.io); the resume builder ignores them.
 website: flixen.se

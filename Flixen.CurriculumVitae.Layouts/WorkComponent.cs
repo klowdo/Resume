@@ -4,7 +4,7 @@ using QuestPDF.Infrastructure;
 
 namespace Flixen.CurriculumVitae.Layouts;
 
-public class WorkComponent(WorkItem workItem) : IComponent
+public class WorkComponent(Engagement engagement, string mutedColor) : IComponent
 {
     public void Compose(IContainer container)
     {
@@ -12,36 +12,36 @@ public class WorkComponent(WorkItem workItem) : IComponent
         {
             col.Spacing(3);
             col.Item()
-                .Text(workItem.Name)
-                .Bold()
-                .FontSize(10)
-                .LetterSpacing(0.1f);
+                .Text(engagement.Role)
+                .SemiBold()
+                .FontSize(9.5f);
 
             col.Item()
                 .Text(text =>
                 {
-                    text.Span(workItem.From.Year.ToString());
-                    text.Span(" - ");
-                    text.Span(workItem.To.HasValue ? workItem.To.Value.Year.ToString() : "Present");
+                    text.DefaultTextStyle(x => x.FontColor(mutedColor).Medium());
+                    text.Span(engagement.Period);
+                    if (!string.IsNullOrWhiteSpace(engagement.Client))
+                    {
+                        text.Span("   Client: ");
+                        text.Span(engagement.Client).SemiBold();
+                    }
                 });
 
             col.Item()
-                .Text(workItem.Place);
-
-            col.Item()
-                .Column(itemCOl =>
+                .Column(items =>
                 {
-                    itemCOl.Spacing(5);
-                    foreach (var item in workItem.Items)
+                    items.Spacing(4);
+                    foreach (var item in engagement.Items)
                     {
-                        itemCOl.Item()
+                        items.Item()
                             .Row(row =>
                             {
                                 row.Spacing(5);
                                 row.AutoItem()
                                     .PaddingHorizontal(5)
-                                    .Text( "•" )
-                                    .ExtraBold();;
+                                    .Text("•")
+                                    .ExtraBold();
                                 row.RelativeItem()
                                     .Text(item)
                                     .Medium();

@@ -24,13 +24,11 @@ public class MainPage(ResumeModel model) : IComponent
                     .Text(model.Contact.Name)
                     .FontFamily("Bebas Neue")
                     .FontSize(67)
-                    .LetterSpacing(0.05f)
                     .LineHeight(0.8f);
 
                 col.Item()
                     .Text(model.Title.ToUpperInvariant())
                     .FontSize(16)
-                    .LetterSpacing(0.1f)
                     .NormalWeight();
                 
                 col.Item()
@@ -39,7 +37,6 @@ public class MainPage(ResumeModel model) : IComponent
                 col.Item()
                     .Text("PROFESSIONAL EXPERIENCE")
                     .FontSize(13)
-                    .LetterSpacing(0.1f)
                     .NormalWeight();
 
                 col.Item()
