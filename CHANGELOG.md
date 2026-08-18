@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/klowdo/Resume/compare/v1.1.0...v1.1.1) (2026-08-18)
+
+
+### Bug Fixes
+
+* **layout:** keep each skill category on one page ([72297b5](https://github.com/klowdo/Resume/commit/72297b56df1e24570d9f16dee58e65e2cd96ebf2))
+
 ## [1.1.0](https://github.com/klowdo/Resume/compare/v1.0.0...v1.1.0) (2026-08-18)
 
 
