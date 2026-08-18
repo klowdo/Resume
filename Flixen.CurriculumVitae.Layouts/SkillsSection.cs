@@ -15,7 +15,7 @@ public class SkillsSection(ResumeModel model) : IComponent
 
             foreach (var group in model.Skills)
             {
-                col.Item().Column(groupCol =>
+                col.Item().ShowEntire().Column(groupCol =>
                 {
                     groupCol.Spacing(3);
                     groupCol.Item().Text(group.Category).SemiBold();
