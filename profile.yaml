@@ -18,17 +18,34 @@ skills:
       - Go
       - Bash
       - TypeScript
+      - HTML/CSS
+      - Blazor
+      - Angular
+      - React
   - category: Architecture
     items:
       - Domain-Driven Design
       - Event Sourcing
+      - Clean Architecture / SOLID
       - Actor model
+      - UML and Mermaid diagrams
   - category: Infrastructure
     items:
       - Azure
       - AWS
+      - Kubernetes
       - Docker
+      - Terraform, Bicep and ARM
+      - GitHub Enterprise
       - Proxmox
+  - category: Databases
+    items:
+      - EventStore
+      - Microsoft SQL Server
+      - PostgreSQL
+      - MongoDB / DocumentDB
+      - Cosmos DB
+      - DynamoDB
   - category: Networking
     items:
       - Linux/NixOS
@@ -44,6 +61,8 @@ employers:
         items:
           - Infrastructure provider based in the Netherlands.
           - Built an event-sourced system where traceability was a key focus, written in Go for performance.
+          - Documented architecture and integration flows as diagrams-as-code with Mermaid, kept in version control alongside the services.
+          - AI-assisted development, from code generation to agent-based tooling in the delivery workflow.
           - "Technologies used: Go, event sourcing, network switches, Docker."
       - client: Volvo
         role: Senior Backend Developer
@@ -51,13 +70,16 @@ employers:
         items:
           - Part of the Energy Device Cloud team at Volvo.
           - Built an OCPP server in .NET using the Orleans actor system, optimized for high performance and scalability.
-          - Infrastructure and hosting handled in AWS using Terraform for IaC.
+          - Infrastructure and hosting handled in AWS using Terraform for IaC, with services running on Kubernetes.
+          - Internal tooling and dashboards built with Blazor.
+          - Heavy focus on automation, from CI/CD in GitHub Enterprise to infrastructure and release pipelines.
       - client: Chargenode EU
         role: Backend Developer
         period: 2023 - 2023
         items:
           - EV charger provider developing everything in-house, from hardware to customer portal and charger protocols.
           - Built a highly scalable system in Azure for connecting 100k+ chargers using the actor model.
+          - Infrastructure as code in Azure Bicep and ARM templates.
           - Maintained and supported mainline development of the existing .NET system.
 
   - name: AFRY/Evolve Technology
@@ -92,6 +114,9 @@ employers:
         period: 2016 - 2019
         items:
           - Co-developed the core banking system and operated it in production for high availability.
+          - Event-sourced domain built on Clean Architecture and SOLID principles, stored in EventStore with Microsoft SQL Server in surrounding systems.
+          - Agile development in cross-functional teams, working in short iterations with continuous delivery.
+          - Frontend work in Angular and React with TypeScript, HTML and CSS alongside the .NET backend.
           - Managed cloud infrastructure, security and CI/CD pipelines using Azure DevOps and Octopus Deploy.
       - role: Developer, Cloud Integration
         period: 2015 - 2016
