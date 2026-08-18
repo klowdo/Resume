@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/klowdo/Resume/compare/v1.0.0...v1.1.0) (2026-08-18)
+
+
+### Features
+
+* **profile:** expand skills and engagement details ([5fa8a2e](https://github.com/klowdo/Resume/commit/5fa8a2e8f43cb1dda3bff3341935c762c05f35bd))
+
 ## [1.0.0](https://github.com/klowdo/Resume/compare/v0.0.3...v1.0.0) (2026-08-10)
 
 
