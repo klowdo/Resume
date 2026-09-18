@@ -35,6 +35,7 @@ skills:
       - AWS
       - Kubernetes
       - Docker
+      - Azure Functions
       - Terraform, Bicep and ARM
       - GitHub Enterprise
       - Proxmox
@@ -90,6 +91,7 @@ employers:
         period: 2020 - 2022
         items:
           - Proactive patient care through live health monitoring, written in C# and hosted in Microsoft Azure.
+          - Built serverless backend services with Azure Functions for event-driven processing of health monitoring data.
           - Software development in agile teams, with focus on identity and security management.
       - client: Worldstream
         role: Senior Developer
