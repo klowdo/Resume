@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/klowdo/Resume/compare/v1.1.1...v1.2.0) (2026-09-18)
+
+
+### Features
+
+* **profile:** add Azure Functions experience from med-tech engagement ([f0f8791](https://github.com/klowdo/Resume/commit/f0f87915698419762532455c20b6eee8abc1d967))
+
 ## [1.1.1](https://github.com/klowdo/Resume/compare/v1.1.0...v1.1.1) (2026-08-18)
 
 
