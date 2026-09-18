@@ -86,11 +86,11 @@ employers:
   - name: AFRY/Evolve Technology
     period: 2020 - 2022
     engagements:
-      - client: Swedish med-tech company
+      - client: Cuviva
         role: Senior Developer
         period: 2020 - 2022
         items:
-          - Proactive patient care through live health monitoring, written in C# and hosted in Microsoft Azure.
+          - Swedish med-tech company. Proactive patient care through live health monitoring, written in C# and hosted in Microsoft Azure.
           - Built serverless backend services with Azure Functions for event-driven processing of health monitoring data.
           - Software development in agile teams, with focus on identity and security management.
       - client: Worldstream
