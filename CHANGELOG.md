@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/klowdo/Resume/compare/v1.2.0...v1.3.0) (2026-09-18)
+
+
+### Features
+
+* **profile:** name Cuviva as the med-tech client ([aa80ac0](https://github.com/klowdo/Resume/commit/aa80ac02bb9e3f86b271b9d9f09c782aa8910519))
+* **profile:** sharpen Cuviva engagement description ([e0cbb95](https://github.com/klowdo/Resume/commit/e0cbb950f30848a4b35e8e90c1224549775cfc25))
+
 ## [1.2.0](https://github.com/klowdo/Resume/compare/v1.1.1...v1.2.0) (2026-09-18)
 
 
