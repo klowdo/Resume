@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/klowdo/Resume/compare/v1.3.0...v1.4.0) (2026-10-19)
+
+
+### Features
+
+* **profile:** add Linux and Nix skills ([96b2580](https://github.com/klowdo/Resume/commit/96b258076287c129944d0b092aff5a5707cf661c))
+* **release:** publish golang resume variant via build matrix ([47f5f1c](https://github.com/klowdo/Resume/commit/47f5f1c8612ddbf42817ccdce9aefd095d028a2d))
+
 ## [1.3.0](https://github.com/klowdo/Resume/compare/v1.2.0...v1.3.0) (2026-09-18)
 
 
