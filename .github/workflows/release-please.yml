@@ -13,7 +13,6 @@ env:
   DOTNET_VERSION: '10.x'
   PROJECT_NAME: 'Flixen.CurriculumVitae.Builder'
   BUILD_CONFIGURATION: Release
-  CONFIG_FILE: '../profile.yaml'
   THEME_FILE: './theme.yaml'
 
 jobs:
@@ -34,6 +33,16 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    strategy:
+      matrix:
+        include:
+          - output: resume.pdf
+            config: ../profile.yaml
+          - output: resume-anonymous.pdf
+            config: ../profile.yaml
+            flags: --anonymous
+          - output: resume-golang.pdf
+            config: ../profile-golang.yaml
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -52,32 +61,20 @@ jobs:
           --no-restore
           --configuration ${{ env.BUILD_CONFIGURATION }}
 
-      - name: Generate PDF
+      - name: Generate ${{ matrix.output }}
         working-directory: ./${{ env.PROJECT_NAME }}
         run: >-
           dotnet run
           --configuration ${{ env.BUILD_CONFIGURATION }}
-          --config-file ${{ env.CONFIG_FILE }}
+          --config-file ${{ matrix.config }}
           --theme-file ${{ env.THEME_FILE }}
+          ${{ matrix.flags }}
           -- write
-          --output ../github-release/folder/resume.pdf
+          --output ../github-release/folder/${{ matrix.output }}
 
-      - name: Generate anonymous PDF
-        working-directory: ./${{ env.PROJECT_NAME }}
-        run: >-
-          dotnet run
-          --configuration ${{ env.BUILD_CONFIGURATION }}
-          --config-file ${{ env.CONFIG_FILE }}
-          --theme-file ${{ env.THEME_FILE }}
-          --anonymous
-          -- write
-          --output ../github-release/folder/resume-anonymous.pdf
-
-      - name: Upload PDFs to release
+      - name: Upload to release
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.release-please.outputs.tag_name }}
-          files: |
-            ./github-release/folder/resume.pdf
-            ./github-release/folder/resume-anonymous.pdf
+          files: ./github-release/folder/${{ matrix.output }}
           token: ${{ secrets.GITHUB_TOKEN }}

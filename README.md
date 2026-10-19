@@ -9,6 +9,7 @@ Latest build: [resume.pdf](https://github.com/klowdo/Resume/releases/latest/down
 ```sh
 just build       # out/resume.pdf
 just anonymous   # out/resume-anonymous.pdf, no contact details
+just golang      # out/resume-golang.pdf from profile-golang.yaml
 just preview     # rebuild on change and open in zathura
 just companion   # QuestPDF Companion live preview
 ```
@@ -17,7 +18,7 @@ Requires .NET 10 and `just`. `nix develop` (or direnv) provides both.
 
 ## Editing
 
-Edit `profile.yaml`. The schema reference at the top of the file gives completion and validation in editors with the YAML language server. Regenerate it from the contracts:
+Edit `profile.yaml`. Assignment-specific variants live in their own file (`profile-golang.yaml`) and are built with `--config-file`; releases include a PDF for each. The schema reference at the top of the file gives completion and validation in editors with the YAML language server. Regenerate it from the contracts:
 
 ```sh
 dotnet run --project Flixen.CurriculumVitae.Contracts.SchemaGenerator \

@@ -9,6 +9,9 @@ build out="out/resume.pdf":
 anonymous out="out/resume-anonymous.pdf":
     cd {{proj}} && dotnet run -- --anonymous write --output {{root / out}}
 
+golang out="out/resume-golang.pdf":
+    cd {{proj}} && dotnet run -- --config-file {{root / "profile-golang.yaml"}} write --output {{root / out}}
+
 all: build anonymous
 
 preview out="out/resume.pdf": (build out)

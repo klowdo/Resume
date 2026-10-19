@@ -1,0 +1,125 @@
+# yaml-language-server: $schema=./Flixen.CurriculumVitae.Contracts.SchemaGenerator/schema.json
+---
+contact:
+  name: Felix Svensson
+  location: Göteborg
+  email: felix@flixen.se
+  phone: "+46737120411"
+  github: github.com/klowdo
+
+title: Friendly Developer
+mainText: "Backend developer with 10+ years of distributed systems, most recently in Go on Kubernetes and Linux — network telemetry, protocol integrations and event-driven platforms. I run Linux everywhere, NixOS on my workstation and a self-hosted container environment at home, and I own the operational side of what I ship. Earlier years were spent on .NET in core banking and EV charging."
+
+skills:
+  - category: Languages
+    items:
+      - Go
+      - Bash
+      - C#/.NET
+      - TypeScript
+  - category: Platform and Linux
+    items:
+      - Linux/NixOS
+      - Kubernetes
+      - Docker
+      - Terraform
+      - GitHub Actions
+      - Proxmox
+      - AWS (Fargate)
+      - Azure (Container Apps)
+  - category: Networking and Telemetry
+    items:
+      - gNMI / gNMIc
+      - Enterprise switches
+      - mTLS and PKI
+      - Telemetry and monitoring
+      - Traefik
+      - Tailscale
+  - category: Architecture
+    items:
+      - Distributed systems
+      - Event Sourcing
+      - Actor model
+      - Protocol integrations (OCPP)
+      - Domain-Driven Design
+      - Diagrams-as-code (Mermaid)
+  - category: Databases
+    items:
+      - PostgreSQL
+      - EventStore
+      - MongoDB
+      - Microsoft SQL Server
+
+employers:
+  - name: Flixen AB
+    period: 2022 - Present
+    engagements:
+      - client: Worldstream
+        role: Backend Developer
+        period: 2022 - 2023, 2025 - 2026
+        items:
+          - Infrastructure provider based in the Netherlands. Backend work in Go, running on Kubernetes.
+          - Network telemetry pipeline built with gNMIc, collecting from around 100 network devices over mTLS.
+          - Automation against enterprise switches.
+          - Event-sourced services in Go, with traceability as a key requirement.
+          - Architecture and integration flows documented as diagrams-as-code with Mermaid, kept in version control alongside the services.
+          - "Technologies used: Go, Kubernetes, Linux, gNMI, enterprise switches, Docker."
+      - client: Volvo
+        role: Senior Backend Developer
+        period: 2023 - 2025
+        items:
+          - Energy Device Cloud, a distributed platform for connected energy devices.
+          - OCPP protocol integration towards chargers, actor-based for scalability and high throughput (.NET Orleans).
+          - Infrastructure and hosting in AWS with Terraform for IaC, services running on Fargate and Kubernetes.
+          - Automation across CI/CD, infrastructure and release pipelines.
+      - client: Chargenode EU
+        role: Backend Developer
+        period: 2023 - 2023
+        items:
+          - EV charger provider developing everything in-house, from hardware to charger protocols and customer portal.
+          - Highly scalable system for connecting 100k+ chargers using the actor model, with charger protocol integrations.
+          - Hosted on Azure Container Apps, with infrastructure as code.
+
+  - name: AFRY/Evolve Technology
+    period: 2020 - 2022
+    engagements:
+      - client: Worldstream
+        role: Senior Developer
+        period: 2022 - 2023
+        items:
+          - Netherlands-based infrastructure provider. Event-sourced system built in Go for performance and traceability.
+      - client: Swedish med-tech company
+        role: Senior Developer
+        period: 2020 - 2022
+        items:
+          - Proactive patient care through live health monitoring, hosted in Microsoft Azure.
+          - Development in agile teams, with focus on identity and security management.
+
+  - name: CXC (Deloitte Australia)
+    period: 2019 - 2020
+    engagements:
+      - role: Developer, Cloud Integration
+        period: 2019 - 2020
+        items:
+          - Application development stream lead, with technical analysis and troubleshooting at cloud infrastructure level.
+          - Cross-team collaboration with Deloitte, clients and third-party vendors, including ITSM incident and problem management.
+
+  - name: Collector Bank
+    period: 2015 - 2019
+    engagements:
+      - role: Tech Lead
+        period: 2016 - 2019
+        items:
+          - Co-developed the core banking system and operated it in production for high availability.
+          - Event-sourced domain stored in EventStore, developed in short iterations with continuous delivery.
+      - role: Developer, Cloud Integration
+        period: 2015 - 2016
+        items:
+          - Analysed, built and deployed cloud service components together with stakeholders.
+
+sections:
+  - title: Personal projects
+    items:
+      - NixOS on every machine, declarative and reproducible.
+      - Self-hosted container environment - Traefik, Tailscale, Docker.
+      - Network telemetry pipeline for switches and access points, with dashboards and alerting.
