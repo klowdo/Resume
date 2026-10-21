@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/klowdo/Resume/compare/v1.4.0...v1.5.0) (2026-10-21)
+
+
+### Features
+
+* **profile:** sharpen CV content and make the PDF easier for parsers to read ([354cb4a](https://github.com/klowdo/Resume/commit/354cb4aba17444e89e8ef9b6dd52f65adf3ee4ea))
+
+
+### Bug Fixes
+
+* **profile:** keep Friendly Developer title, stop tracking resume.pdf ([58e77a8](https://github.com/klowdo/Resume/commit/58e77a825892475e886364b42bb4eda84acd459e))
+
 ## [1.4.0](https://github.com/klowdo/Resume/compare/v1.3.0...v1.4.0) (2026-10-19)
 
 
