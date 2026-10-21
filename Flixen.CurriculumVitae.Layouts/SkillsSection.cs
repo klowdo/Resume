@@ -41,18 +41,20 @@ public class SideSectionComponent(SideSection section) : IComponent
     public static void Heading(IContainer container, string title) =>
         container.Text(title.ToUpperInvariant()).FontSize(13);
 
+    // Bullet and text are one text block so PDF text extraction keeps them on the same line
+    // (QuestPDF has no hanging indent, so wrapped lines sit under the bullet).
     public static void Bullets(IContainer container, IEnumerable<string> items) =>
         container.Column(col =>
         {
             col.Spacing(4);
             foreach (var item in items)
             {
-                col.Item().Row(row =>
-                {
-                    row.Spacing(8);
-                    row.AutoItem().Text("•").Bold();
-                    row.RelativeItem().Text(item);
-                });
+                col.Item()
+                    .Text(text =>
+                    {
+                        text.Span("•\u2002").Bold();
+                        text.Span(item);
+                    });
             }
         });
 }

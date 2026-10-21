@@ -6,6 +6,8 @@ namespace Flixen.CurriculumVitae.Layouts;
 
 public class WorkComponent(Engagement engagement, string mutedColor) : IComponent
 {
+    private const float BulletIndent = 5f;
+
     public void Compose(IContainer container)
     {
         container.Column(col =>
@@ -35,16 +37,11 @@ public class WorkComponent(Engagement engagement, string mutedColor) : IComponen
                     foreach (var item in engagement.Items)
                     {
                         items.Item()
-                            .Row(row =>
+                            .PaddingLeft(BulletIndent)
+                            .Text(text =>
                             {
-                                row.Spacing(5);
-                                row.AutoItem()
-                                    .PaddingHorizontal(5)
-                                    .Text("•")
-                                    .ExtraBold();
-                                row.RelativeItem()
-                                    .Text(item)
-                                    .Medium();
+                                text.Span("•\u2002").ExtraBold();
+                                text.Span(item).Medium();
                             });
                     }
                 });

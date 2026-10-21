@@ -6,8 +6,9 @@ contact:
   email: felix@flixen.se
   phone: "+46737120411"
   github: github.com/klowdo
+  linkedin: linkedin.com/in/felix-svensson
 
-title: Friendly Developer
+title: Senior Backend Developer
 mainText: "Backend developer with 10+ years of distributed systems, most recently in Go on Kubernetes and Linux — network telemetry, protocol integrations and event-driven platforms. I run Linux everywhere, NixOS on my workstation and a self-hosted container environment at home, and I own the operational side of what I ship. Earlier years were spent on .NET in core banking and EV charging."
 
 skills:
@@ -51,14 +52,14 @@ skills:
       - Microsoft SQL Server
 
 employers:
-  - name: Flixen AB
+  - name: Flixen AB (own consultancy)
     period: 2022 - Present
     engagements:
       - client: Worldstream
-        role: Backend Developer
+        role: Senior Backend Developer
         period: 2022 - 2023, 2025 - 2026
         items:
-          - Infrastructure provider based in the Netherlands. Backend work in Go, running on Kubernetes.
+          - Infrastructure provider based in the Netherlands. Backend work in Go, running on Kubernetes. Engagement started through AFRY/Evolve in 2022 and continued through Flixen AB.
           - Network telemetry pipeline built with gNMIc, collecting from around 100 network devices over mTLS.
           - Automation against enterprise switches.
           - Event-sourced services in Go, with traceability as a key requirement.
@@ -74,7 +75,7 @@ employers:
           - Automation across CI/CD, infrastructure and release pipelines.
       - client: Chargenode EU
         role: Backend Developer
-        period: 2023 - 2023
+        period: "2023"
         items:
           - EV charger provider developing everything in-house, from hardware to charger protocols and customer portal.
           - Highly scalable system for connecting 100k+ chargers using the actor model, with charger protocol integrations.
@@ -83,26 +84,22 @@ employers:
   - name: AFRY/Evolve Technology
     period: 2020 - 2022
     engagements:
-      - client: Worldstream
-        role: Senior Developer
-        period: 2022 - 2023
-        items:
-          - Netherlands-based infrastructure provider. Event-sourced system built in Go for performance and traceability.
-      - client: Swedish med-tech company
+      - client: Cuviva
         role: Senior Developer
         period: 2020 - 2022
         items:
-          - Proactive patient care through live health monitoring, hosted in Microsoft Azure.
-          - Development in agile teams, with focus on identity and security management.
+          - Swedish digital care company. Proactive care for home-care patients through live health monitoring, written in C# and hosted in Microsoft Azure.
+          - Built serverless backend services with Azure Functions for event-driven processing of health monitoring data.
+          - Responsible for identity and security management for patient and care-staff access.
 
-  - name: CXC (Deloitte Australia)
+  - name: Deloitte Australia (contracted through CXC)
     period: 2019 - 2020
     engagements:
       - role: Developer, Cloud Integration
         period: 2019 - 2020
         items:
-          - Application development stream lead, with technical analysis and troubleshooting at cloud infrastructure level.
-          - Cross-team collaboration with Deloitte, clients and third-party vendors, including ITSM incident and problem management.
+          - Stream lead for application development on Deloitte client projects, with technical analysis and troubleshooting at cloud infrastructure level.
+          - Worked across Deloitte teams, clients and third-party vendors, including incident and problem management.
 
   - name: Collector Bank
     period: 2015 - 2019
@@ -123,3 +120,7 @@ sections:
       - NixOS on every machine, declarative and reproducible.
       - Self-hosted container environment - Traefik, Tailscale, Docker.
       - Network telemetry pipeline for switches and access points, with dashboards and alerting.
+  - title: Languages
+    items:
+      - Swedish, native
+      - English, fluent

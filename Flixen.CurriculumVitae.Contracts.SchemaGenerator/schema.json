@@ -85,6 +85,9 @@
         },
         "github": {
           "type": "string"
+        },
+        "linkedin": {
+          "type": "string"
         }
       }
     },

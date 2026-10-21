@@ -26,7 +26,8 @@ public class ContactItems(IEnumerable<(string item, string text)> items) : IComp
                 table.Cell()
                     .AlignTop()
                     .PaddingBottom(Padding)
-                    .Text(text);
+                    .Text(text)
+                    .FontSize(8);
             }
         });
     }
