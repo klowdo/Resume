@@ -8,8 +8,8 @@ contact:
   github: github.com/klowdo
   linkedin: linkedin.com/in/felix-svensson
 
-title: Senior Backend Developer
-mainText: "Backend developer with 10+ years of distributed systems, most recently in Go on Kubernetes and Linux — network telemetry, protocol integrations and event-driven platforms. I run Linux everywhere, NixOS on my workstation and a self-hosted container environment at home, and I own the operational side of what I ship. Earlier years were spent on .NET in core banking and EV charging."
+title: Friendly Developer
+mainText: "Senior backend developer with 10+ years of distributed systems, most recently in Go on Kubernetes and Linux — network telemetry, protocol integrations and event-driven platforms. I run Linux everywhere, NixOS on my workstation and a self-hosted container environment at home, and I own the operational side of what I ship. Earlier years were spent on .NET in core banking and EV charging."
 
 skills:
   - category: Languages

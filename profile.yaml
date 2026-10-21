@@ -8,8 +8,8 @@ contact:
   github: github.com/klowdo
   linkedin: linkedin.com/in/felix-svensson
 
-title: Senior Backend Developer
-mainText: "Backend developer with 10+ years building distributed, event-sourced systems in Go and .NET — core banking, EV charging platforms and network infrastructure. I like working close to the metal: Linux, protocols, and owning the operational side of what I ship."
+title: Friendly Developer
+mainText: "Senior backend developer with 10+ years building distributed, event-sourced systems in Go and .NET — core banking, EV charging platforms and network infrastructure. I like working close to the metal: Linux, protocols, and owning the operational side of what I ship."
 
 skills:
   - category: Languages
@@ -25,6 +25,7 @@ skills:
       - Actor model (Orleans)
       - Clean Architecture / SOLID
       - Distributed systems
+      - UML and Mermaid diagrams
   - category: Cloud and infrastructure
     items:
       - AWS
