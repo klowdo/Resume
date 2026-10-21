@@ -2,89 +2,91 @@
 ---
 contact:
   name: Felix Svensson
-  location: Göteborg
+  location: Göteborg, Sweden
   email: felix@flixen.se
   phone: "+46737120411"
   github: github.com/klowdo
+  linkedin: linkedin.com/in/felix-svensson
 
-title: Friendly Developer
-mainText: "Backend developer with 10+ years building distributed, event-sourced systems in Go and .NET — core banking, EV charging platforms, and network infrastructure. I like working close to the metal: Linux, protocols, and owning the operational side of what I ship."
-
+title: Senior Backend Developer
+mainText: "Backend developer with 10+ years building distributed, event-sourced systems in Go and .NET — core banking, EV charging platforms and network infrastructure. I like working close to the metal: Linux, protocols, and owning the operational side of what I ship."
 
 skills:
   - category: Languages
     items:
-      - C#/.NET
       - Go
-      - Bash
+      - C#/.NET
       - TypeScript
-      - HTML/CSS
-      - Blazor
-      - Angular
-      - React
+      - Bash
   - category: Architecture
     items:
+      - Event Sourcing / CQRS
       - Domain-Driven Design
-      - Event Sourcing
+      - Actor model (Orleans)
       - Clean Architecture / SOLID
-      - Actor model
-      - UML and Mermaid diagrams
-  - category: Infrastructure
+      - Distributed systems
+  - category: Cloud and infrastructure
     items:
-      - Azure
       - AWS
+      - Azure
       - Kubernetes
       - Docker
-      - Azure Functions
       - Terraform, Bicep and ARM
-      - GitHub Enterprise
+      - Azure Functions
+      - CI/CD (GitHub Actions, Azure DevOps)
       - Proxmox
   - category: Databases
     items:
-      - EventStore
-      - Microsoft SQL Server
+      - EventStoreDB
       - PostgreSQL
+      - Microsoft SQL Server
       - MongoDB / DocumentDB
       - Cosmos DB
       - DynamoDB
-  - category: Linux
+  - category: Linux and networking
     items:
-      - Linux
-      - Nix / NixOS
-  - category: Networking
+      - Linux / NixOS
+      - Network switches and telemetry
+      - Monitoring and alerting
+  - category: Frontend
     items:
-      - Telemetry and monitoring
+      - Blazor
+      - Angular
+      - React
 
 employers:
-  - name: Flixen AB
+  - name: Flixen AB (own consultancy)
     period: 2022 - Present
     engagements:
       - client: Worldstream
-        role: Backend Developer
+        role: Senior Backend Developer
         period: 2022 - 2023, 2025 - 2026
         items:
-          - Infrastructure provider based in the Netherlands.
-          - Built an event-sourced system where traceability was a key focus, written in Go for performance.
+          - Infrastructure provider based in the Netherlands. Engagement started through AFRY/Evolve in 2022 and continued through Flixen AB.
+          - Built an event-sourced system in Go where traceability was a key requirement, running on Kubernetes.
+          - Network telemetry pipeline built with gNMIc, collecting from around 100 network devices over mTLS, with automation against enterprise switches.
           - Documented architecture and integration flows as diagrams-as-code with Mermaid, kept in version control alongside the services.
           - AI-assisted development, from code generation to agent-based tooling in the delivery workflow.
-          - "Technologies used: Go, event sourcing, network switches, Docker."
+          - "Technologies used: Go, Kubernetes, Linux, gNMI, event sourcing, network switches, Docker."
       - client: Volvo
         role: Senior Backend Developer
         period: 2023 - 2025
         items:
-          - Part of the Energy Device Cloud team at Volvo.
-          - Built an OCPP server in .NET using the Orleans actor system, optimized for high performance and scalability.
-          - Infrastructure and hosting handled in AWS using Terraform for IaC, with services running on Kubernetes.
+          - Part of the Energy Device Cloud team, a distributed platform for connected energy devices.
+          - Built an OCPP server in .NET on the Orleans actor system, designed for high throughput and horizontal scalability.
+          - Infrastructure and hosting in AWS with Terraform for IaC, services running on Kubernetes.
           - Internal tooling and dashboards built with Blazor.
-          - Heavy focus on automation, from CI/CD in GitHub Enterprise to infrastructure and release pipelines.
+          - Automation across CI/CD in GitHub Enterprise, infrastructure and release pipelines.
+          - "Technologies used: .NET, Orleans, OCPP, AWS, Terraform, Kubernetes, Blazor, GitHub Enterprise."
       - client: Chargenode EU
         role: Backend Developer
-        period: 2023 - 2023
+        period: "2023"
         items:
-          - EV charger provider developing everything in-house, from hardware to customer portal and charger protocols.
+          - EV charger provider developing everything in-house, from hardware to charger protocols and customer portal.
           - Built a highly scalable system in Azure for connecting 100k+ chargers using the actor model.
           - Infrastructure as code in Azure Bicep and ARM templates.
           - Maintained and supported mainline development of the existing .NET system.
+          - "Technologies used: .NET, Azure, actor model, Bicep, ARM."
 
   - name: AFRY/Evolve Technology
     period: 2020 - 2022
@@ -95,22 +97,18 @@ employers:
         items:
           - Swedish digital care company. Proactive care for home-care patients through live health monitoring, written in C# and hosted in Microsoft Azure.
           - Built serverless backend services with Azure Functions for event-driven processing of health monitoring data.
-          - Software development in agile teams, with focus on identity and security management.
-      - client: Worldstream
-        role: Senior Developer
-        period: 2022 - 2023
-        items:
-          - Netherlands-based infrastructure provider. Event-sourced system built in Go for performance and traceability.
+          - Responsible for identity and security management for patient and care-staff access.
+          - "Technologies used: C#/.NET, Azure Functions, Azure, identity management."
 
-
-  - name: CXC (Deloitte Australia)
+  - name: Deloitte Australia (contracted through CXC)
     period: 2019 - 2020
     engagements:
       - role: Developer, Cloud Integration
         period: 2019 - 2020
         items:
-          - Application development stream lead, with technical analysis and troubleshooting at cloud infrastructure level.
-          - Cross-team collaboration with Deloitte, clients and third-party vendors, including ITSM incident and problem management.
+          - Stream lead for application development on Deloitte client projects, with technical analysis and troubleshooting at cloud infrastructure level.
+          - Worked across Deloitte teams, clients and third-party vendors, including incident and problem management.
+          - "Technologies used: Azure, cloud integration, ITSM."
 
   - name: Collector Bank
     period: 2015 - 2019
@@ -120,9 +118,9 @@ employers:
         items:
           - Co-developed the core banking system and operated it in production for high availability.
           - Event-sourced domain built on Clean Architecture and SOLID principles, stored in EventStore with Microsoft SQL Server in surrounding systems.
-          - Agile development in cross-functional teams, working in short iterations with continuous delivery.
-          - Frontend work in Angular and React with TypeScript, HTML and CSS alongside the .NET backend.
+          - Frontend work in Angular and React with TypeScript alongside the .NET backend.
           - Managed cloud infrastructure, security and CI/CD pipelines using Azure DevOps and Octopus Deploy.
+          - "Technologies used: .NET, EventStore, SQL Server, Angular, React, Azure DevOps, Octopus Deploy."
       - role: Developer, Cloud Integration
         period: 2015 - 2016
         items:
@@ -134,6 +132,14 @@ sections:
       - Network telemetry pipeline for switches and access points, with dashboards and alerting.
       - NixOS configuration for all machines, declarative and reproducible.
       - Home Assistant automation for a self-hosted smart home.
+  - title: Languages
+    items:
+      - Swedish, native
+      - English, fluent
+  # Fill in and uncomment. ATS parsers score an empty education section low.
+  # - title: Education
+  #   items:
+  #     - "<Degree>, <School>, <years>"
 
 # Fields below are consumed by the website (klowdo.github.io); the resume builder ignores them.
 website: flixen.se

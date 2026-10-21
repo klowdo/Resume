@@ -7,4 +7,5 @@ public class ContactInforation
     public string Email { get; set; } = string.Empty;
     public string Location { get; set; } = string.Empty;
     public string Github { get; set; } = string.Empty;
+    public string Linkedin { get; set; } = string.Empty;
 }

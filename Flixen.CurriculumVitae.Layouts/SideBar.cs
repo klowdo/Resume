@@ -41,7 +41,8 @@ public class SideBar(ResumeModel model) : IComponent
                             ("", contact.Phone),
                             ("", contact.Email),
                             ("", contact.Location),
-                            ("", contact.Github)
+                            ("", contact.Github),
+                            ("", contact.Linkedin)
                         }));
                 }
 
