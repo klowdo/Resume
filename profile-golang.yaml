@@ -64,7 +64,16 @@ employers:
           - Automation against enterprise switches.
           - Event-sourced services in Go, with traceability as a key requirement.
           - Architecture and integration flows documented as diagrams-as-code with Mermaid, kept in version control alongside the services.
-          - "Technologies used: Go, Kubernetes, Linux, gNMI, enterprise switches, Docker."
+        skills:
+          - Go
+          - Kubernetes
+          - Linux
+          - gNMI / gNMIc
+          - mTLS
+          - Enterprise switches
+          - Event sourcing
+          - Mermaid
+          - Docker
       - client: Volvo
         role: Senior Backend Developer
         period: 2023 - 2025
@@ -73,6 +82,15 @@ employers:
           - OCPP protocol integration towards chargers, actor-based for scalability and high throughput (.NET Orleans).
           - Infrastructure and hosting in AWS with Terraform for IaC, services running on Fargate and Kubernetes.
           - Automation across CI/CD, infrastructure and release pipelines.
+        skills:
+          - C#/.NET
+          - Orleans
+          - OCPP
+          - AWS
+          - Fargate
+          - Terraform
+          - Kubernetes
+          - CI/CD
       - client: Chargenode EU
         role: Backend Developer
         period: "2023"
@@ -80,6 +98,12 @@ employers:
           - EV charger provider developing everything in-house, from hardware to charger protocols and customer portal.
           - Highly scalable system for connecting 100k+ chargers using the actor model, with charger protocol integrations.
           - Hosted on Azure Container Apps, with infrastructure as code.
+        skills:
+          - C#/.NET
+          - Azure Container Apps
+          - Actor model
+          - Bicep
+          - ARM templates
 
   - name: AFRY/Evolve Technology
     period: 2020 - 2022
@@ -91,6 +115,11 @@ employers:
           - Swedish digital care company. Proactive care for home-care patients through live health monitoring, written in C# and hosted in Microsoft Azure.
           - Built serverless backend services with Azure Functions for event-driven processing of health monitoring data.
           - Responsible for identity and security management for patient and care-staff access.
+        skills:
+          - C#/.NET
+          - Azure Functions
+          - Azure
+          - Identity management
 
   - name: Deloitte Australia (contracted through CXC)
     period: 2019 - 2020
@@ -100,6 +129,11 @@ employers:
         items:
           - Stream lead for application development on Deloitte client projects, with technical analysis and troubleshooting at cloud infrastructure level.
           - Worked across Deloitte teams, clients and third-party vendors, including incident and problem management.
+        skills:
+          - Azure
+          - Cloud integration
+          - ITSM
+          - Incident management
 
   - name: Collector Bank
     period: 2015 - 2019
@@ -109,6 +143,13 @@ employers:
         items:
           - Co-developed the core banking system and operated it in production for high availability.
           - Event-sourced domain stored in EventStore, developed in short iterations with continuous delivery.
+        skills:
+          - C#/.NET
+          - Event Sourcing
+          - EventStore
+          - SQL Server
+          - Azure DevOps
+          - Continuous delivery
       - role: Developer, Cloud Integration
         period: 2015 - 2016
         items:

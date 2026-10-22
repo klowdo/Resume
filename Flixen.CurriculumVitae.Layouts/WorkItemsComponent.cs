@@ -60,7 +60,7 @@ public class WorkItemsComponent(ResumeModel model) : IComponent
             {
                 layers.PrimaryLayer()
                     .PaddingLeft(EngagementPadding)
-                    .Component(new WorkComponent(engagement, model.Colors.Muted));
+                    .Component(new WorkComponent(engagement, model.Colors));
 
                 layers.Layer()
                     .Component(new DotsAndLines(EngagementPadding, 2.5f));
