@@ -126,6 +126,8 @@ employers:
           - C#/.NET
           - Azure Functions
           - Azure
+          - Kubernetes
+          - Curity
           - Identity management
 
   - name: Deloitte Australia (contracted through CXC)
@@ -161,12 +163,31 @@ employers:
           - Angular
           - React
           - TypeScript
+          - Entity Framework
+          - Elasticsearch
+          - Kubernetes
+          - Curity
           - Azure DevOps
           - Octopus Deploy
+          - GitHub
+          - JIRA
       - role: Developer, Cloud Integration
         period: 2015 - 2016
         items:
           - Analysed, built and deployed cloud service components together with stakeholders.
+        skills:
+          - C#/.NET
+          - Azure
+          - Kubernetes
+          - Event Sourcing / CQRS
+          - TypeScript
+          - SQL Server
+          - Entity Framework
+          - Elasticsearch
+          - Curity
+          - Azure DevOps
+          - GitHub
+          - JIRA
 
 sections:
   - title: Personal projects
