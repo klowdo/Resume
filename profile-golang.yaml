@@ -85,8 +85,12 @@ employers:
         skills:
           - C#/.NET
           - Orleans
+          - Actor model
           - OCPP
+          - MQTT
           - AWS
+          - AWS IoT Core
+          - mTLS
           - Fargate
           - Terraform
           - Kubernetes
