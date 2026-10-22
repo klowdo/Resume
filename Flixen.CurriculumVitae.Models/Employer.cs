@@ -13,4 +13,5 @@ public class Engagement
     public string Role { get; set; } = string.Empty;
     public string Period { get; set; } = string.Empty;
     public string[] Items { get; set; } = [];
+    public string[] Skills { get; set; } = [];
 }
