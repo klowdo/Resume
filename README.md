@@ -18,7 +18,7 @@ Requires .NET 10 and `just`. `nix develop` (or direnv) provides both.
 
 ## Editing
 
-Edit `profile.yaml`. Assignment-specific variants live in their own file (`profile-golang.yaml`) and are built with `--config-file`; releases include a PDF for each. The schema reference at the top of the file gives completion and validation in editors with the YAML language server. Regenerate it from the contracts:
+Edit `profile.yaml`. Each engagement can list its own `skills`, rendered as tags under its bullet points; the sidebar `skills` groups stay the overall summary. Assignment-specific variants live in their own file (`profile-golang.yaml`) and are built with `--config-file`; releases include a PDF for each. The schema reference at the top of the file gives completion and validation in editors with the YAML language server. Regenerate it from the contracts:
 
 ```sh
 dotnet run --project Flixen.CurriculumVitae.Contracts.SchemaGenerator \

@@ -68,7 +68,16 @@ employers:
           - Network telemetry pipeline built with gNMIc, collecting from around 100 network devices over mTLS, with automation against enterprise switches.
           - Documented architecture and integration flows as diagrams-as-code with Mermaid, kept in version control alongside the services.
           - AI-assisted development, from code generation to agent-based tooling in the delivery workflow.
-          - "Technologies used: Go, Kubernetes, Linux, gNMI, event sourcing, network switches, Docker."
+        skills:
+          - Go
+          - Kubernetes
+          - Linux
+          - gNMI / gNMIc
+          - Event sourcing
+          - Network switches
+          - mTLS
+          - Mermaid
+          - Docker
       - client: Volvo
         role: Senior Backend Developer
         period: 2023 - 2025
@@ -78,7 +87,20 @@ employers:
           - Infrastructure and hosting in AWS with Terraform for IaC, services running on Kubernetes.
           - Internal tooling and dashboards built with Blazor.
           - Automation across CI/CD in GitHub Enterprise, infrastructure and release pipelines.
-          - "Technologies used: .NET, Orleans, OCPP, AWS, Terraform, Kubernetes, Blazor, GitHub Enterprise."
+        skills:
+          - C#/.NET
+          - Orleans
+          - Actor model
+          - OCPP
+          - MQTT
+          - AWS
+          - AWS IoT Core
+          - mTLS
+          - Terraform
+          - Kubernetes
+          - Blazor
+          - GitHub Enterprise
+          - CI/CD
       - client: Chargenode EU
         role: Backend Developer
         period: "2023"
@@ -87,7 +109,12 @@ employers:
           - Built a highly scalable system in Azure for connecting 100k+ chargers using the actor model.
           - Infrastructure as code in Azure Bicep and ARM templates.
           - Maintained and supported mainline development of the existing .NET system.
-          - "Technologies used: .NET, Azure, actor model, Bicep, ARM."
+        skills:
+          - C#/.NET
+          - Azure
+          - Actor model
+          - Bicep
+          - ARM templates
 
   - name: AFRY/Evolve Technology
     period: 2020 - 2022
@@ -99,7 +126,13 @@ employers:
           - Swedish digital care company. Proactive care for home-care patients through live health monitoring, written in C# and hosted in Microsoft Azure.
           - Built serverless backend services with Azure Functions for event-driven processing of health monitoring data.
           - Responsible for identity and security management for patient and care-staff access.
-          - "Technologies used: C#/.NET, Azure Functions, Azure, identity management."
+        skills:
+          - C#/.NET
+          - Azure Functions
+          - Azure
+          - Kubernetes
+          - Curity
+          - Identity management
 
   - name: Deloitte Australia (contracted through CXC)
     period: 2019 - 2020
@@ -109,7 +142,11 @@ employers:
         items:
           - Stream lead for application development on Deloitte client projects, with technical analysis and troubleshooting at cloud infrastructure level.
           - Worked across Deloitte teams, clients and third-party vendors, including incident and problem management.
-          - "Technologies used: Azure, cloud integration, ITSM."
+        skills:
+          - Azure
+          - Cloud integration
+          - ITSM
+          - Incident management
 
   - name: Collector Bank
     period: 2015 - 2019
@@ -121,11 +158,40 @@ employers:
           - Event-sourced domain built on Clean Architecture and SOLID principles, stored in EventStore with Microsoft SQL Server in surrounding systems.
           - Frontend work in Angular and React with TypeScript alongside the .NET backend.
           - Managed cloud infrastructure, security and CI/CD pipelines using Azure DevOps and Octopus Deploy.
-          - "Technologies used: .NET, EventStore, SQL Server, Angular, React, Azure DevOps, Octopus Deploy."
+        skills:
+          - C#/.NET
+          - Event Sourcing
+          - Clean Architecture
+          - EventStore
+          - SQL Server
+          - Angular
+          - React
+          - TypeScript
+          - Entity Framework
+          - Elasticsearch
+          - Kubernetes
+          - Curity
+          - Azure DevOps
+          - Octopus Deploy
+          - GitHub
+          - JIRA
       - role: Developer, Cloud Integration
         period: 2015 - 2016
         items:
           - Analysed, built and deployed cloud service components together with stakeholders.
+        skills:
+          - C#/.NET
+          - Azure
+          - Kubernetes
+          - Event Sourcing / CQRS
+          - TypeScript
+          - SQL Server
+          - Entity Framework
+          - Elasticsearch
+          - Curity
+          - Azure DevOps
+          - GitHub
+          - JIRA
 
 sections:
   - title: Personal projects

@@ -13,7 +13,9 @@ public class DefaultCvDocument(ResumeModel model) : IDocument
         Title = model.Anonymous ? "Resume" : $"{model.Contact.Name} - {model.Title}",
         Author = model.Anonymous ? string.Empty : model.Contact.Name,
         Subject = model.Title,
-        Keywords = string.Join(", ", model.Skills.SelectMany(group => group.Items)),
+        Keywords = string.Join(", ", model.Skills.SelectMany(group => group.Items)
+            .Concat(model.Employers.SelectMany(employer => employer.Engagements).SelectMany(engagement => engagement.Skills))
+            .Distinct()),
         Creator = "Flixen.CurriculumVitae",
         Producer = "QuestPDF",
     };
